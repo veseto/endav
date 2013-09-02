@@ -23,7 +23,7 @@
   <body>
     <script type="text/javascript">
       $('ul.nav.nav-pills li').click(function() {           
-    $(this).parent().addClass('active').siblings().removeClass('active');           
+        $(this).parent().addClass('active').siblings().removeClass('active');           
       });
     </script>
     <div id="wrap">

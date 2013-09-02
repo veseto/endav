@@ -15,6 +15,12 @@
 		echo $_SESSION['msg'];
 	}
 ?>
+
+<script src="js/validation/lib/jquery.js"></script>
+<script src="js/validation/jquery.validate.js"></script>
+<script src="js/validation/additional-methods.js"></script>
+
+
 <div class="input-group">
 <form class="form-signin" id="registerForm" method="post" action="usrregister.php">
 	<?php
@@ -31,10 +37,44 @@
 	<input type="password" name="password" id="password" class="input-block-level" placeholder="password"/>
 	<input type="password" name="password_confirm" id="password_confirm" class="input-block-level" placeholder="confirm password"/>
     <label class="checkbox">
-      <input type="checkbox" name="agree" value="remember-me"> I agree with <a href="#">terms of use</a>.
+      <input type="checkbox" name="agree" value="agree"> I agree with <a href="#">terms of use</a>.
     </label>
 	<button class="btn btn-large btn-primary btn-block" name="submit" type="submit">Register</button>
 </form>
+
+<style type="text/css">
+#registerForm label.error {
+	margin-left: 10px;
+	/*width: auto;*/
+	/*display: inline;*/
+}
+</style>
+
+<script>
+$( "#registerForm" ).validate({
+  rules: {
+    email: {
+      required: true,
+      email: true
+    },
+    refMail: {
+    	email: true
+    },
+    password: {
+    	minlength: 5,
+    	required: true
+    },
+    password_confirm: {
+    	equalTo: "#password"
+    },
+    agree: {
+    	required: true
+    }
+  }
+});
+</script>
+
+
 </div>
 <?php
 	include("footer.php");
