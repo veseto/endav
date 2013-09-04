@@ -11,7 +11,7 @@
     if ($state === "OK") {
       $_SESSION['binar'] = '1';
     }
-    header("Location: index.php");
+    //header("Location: index.php");
   }
 
 ?>
