@@ -1,12 +1,15 @@
 <?php
 	session_start();
 	include("connection.php");
+	require_once('includes/phpass-0.3/PasswordHash.php');
 	$email=$_POST["email"];
 	$password=$_POST["password"];
 	if (!empty($email) && !empty($password)) {
-		$q="SELECT * FROM user WHERE email='".$mysqli->real_escape_string($email)."' AND password='".sha1($mysqli->real_escape_string($password))."'";
+		$hasher = new PasswordHash(8, false);
+		$q="SELECT * FROM user WHERE email='".$mysqli->real_escape_string($email)."'";
 		$result=$mysqli->query($q);
 		$array=$result->fetch_array();
+		if ($hasher->CheckPassword($mysqli->real_escape_string($password), $hashedPassword)) {
 		if ($array['activated'] === '1') {
 				$_SESSION["uid"] = $array["userId"];
 				$_SESSION['binar'] = $array["binar"];
@@ -26,6 +29,7 @@
 			} else {
 				$msg = "no such user";
 			}
+		}
 		}
 		$_SESSION['msg'] = $msg;
 		header('Location: index.php') ;

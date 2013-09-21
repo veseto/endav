@@ -6,9 +6,9 @@ include("../processBinar.php");
 
 // PayPal settings
 $paypal_email = 'ludataaa-facilitator@mail.bg';
-$return_url = $url;
+$return_url = "http://dev.endav.com/paypal/paymentsResponse.php";
 $cancel_url = $url.'payment-cancelled.php';
-$notify_url = $url.'paypal/paymentsResponse.php';
+$notify_url = "http://dev.endav.com/paypal/paymentsResponse.php";
 
 
 // Include Functions
@@ -39,7 +39,7 @@ mysql_select_db($db_name);
 	// Append paypal return addresses
 	$querystring .= "return=".urlencode(stripslashes($return_url))."&";
 	$querystring .= "cancel_return=".urlencode(stripslashes($cancel_url))."&";
-	$querystring .= "notify_url=".urlencode($notify_url);
+	$querystring .= "notify_url=".urlencode(stripcslashes($notify_url));
 	
 	// Append querystring with custom field
 	//$querystring .= "&custom=".USERID;

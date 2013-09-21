@@ -3,7 +3,7 @@
   //if (isset($_SESSION['status']) && $_SESSION['status'] === 'OK'){
   //  echo "<h3>You activated your account</h3>";
   //}
-  print_r($_SESSION);
+  //print_r($_SESSION);
   if (isset($_SESSION['uid'])) {
     if (isset($_SESSION['binar']) && $_SESSION['binar'] === '1') {
       echo "Congrats! You started making money <br />";

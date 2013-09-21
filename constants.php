@@ -1,6 +1,7 @@
 <?php
 	//Bonus and payments constants
-	$levelsToBonus=4;
+	$levelsToBonus1 = 3;
+	$levelsToBonus2 = 4;
 
 	//Easy access constants
 	$url = "http://dev.endav.com/";

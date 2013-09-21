@@ -13,7 +13,7 @@
 	<div class="input-group">
 		<form class="form-signin" method="post" action="usrlogin.php" id="login">
   			<input type="text" name="email" id="email" class="input-block-level" placeholder="email"/>
-			<input type="password" name="password" id="password" class="input-block-level" placeholder="password"/> <br>
+			<input type="password" name="password" id="password" class="input-block-level" placeholder="password"/>
 	        <label class="checkbox">
 	          <input type="checkbox" value="remember-me"> Remember me
 	        </label>

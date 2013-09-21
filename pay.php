@@ -10,7 +10,7 @@
 
 <form id="paypal_form" class="paypal" action="paypal/payments.php" method="post">
 
-	<select name="quantity" id="amount">
+	<select name="quantity" id="quantity">
 		<option value="1">1</option>
 		<option value="2">2</option>
 		<option value="3">3</option>
