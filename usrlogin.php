@@ -9,6 +9,7 @@
 		$q="SELECT * FROM user WHERE email='".$mysqli->real_escape_string($email)."'";
 		$result=$mysqli->query($q);
 		$array=$result->fetch_array();
+		$hashedPassword = $array['password'];
 		if ($hasher->CheckPassword($mysqli->real_escape_string($password), $hashedPassword)) {
 		if ($array['activated'] === '1') {
 				$_SESSION["uid"] = $array["userId"];
@@ -31,7 +32,7 @@
 			}
 		}
 		}
-		$_SESSION['msg'] = $msg;
+		//$_SESSION['msg'] = $msg;
 		header('Location: index.php') ;
 	}
 ?>
