@@ -5,8 +5,8 @@
 	require_once('includes/phpass-0.3/PasswordHash.php');
 	$email = $_POST['email'];
 	$password = $_POST['password'];
-	$refferal = $_SESSION['ref'];
 	$message = "";
+	$refferal = $_SESSION["ref"];
 	if (isset($_POST['refMail']) && $_POST['refMail'] != "") {
 		$refferal = $mysqli->query("SELECT userId From user where email='".$_POST['refMail']."'")->fetch_array()['userId'];
 		$_SESSION['ref'] = $refferal;
@@ -25,7 +25,6 @@
 			$userId=$mysqli->insert_id;
 			$subject = "Confirm registration";
 			$headers = "";
-
 			$mailBody = "To confirm your account please follow the link: ".$url."confirm.php?id=".sha1('firstrandomstring'.$email.'secondrandomstring')."\nYour password is $password";
 			mail($email,$subject,$mailBody,$headers);
 			$_SESSION['msg'] = "Registration successful!";

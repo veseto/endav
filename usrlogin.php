@@ -15,7 +15,7 @@
 				$_SESSION["uid"] = $array["userId"];
 				$_SESSION['binar'] = $array["binar"];
 				$_SESSION['email'] = $array["email"];
-				if ($array["refferal"] != -1) {
+				if ($array["refferal"] != '0') {
 					$_SESSION['ref'] = $array["refferal"];
 				}
 				

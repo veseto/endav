@@ -61,7 +61,7 @@ function post_request($url, $data, $referer='') {
         'content' => $content
     );
 }
-for ($i = 0; $i < 5000; $i ++) {
+for ($i = 0; $i < 50; $i ++) {
 $email = $i.'a@a.a';
 $post_data = array(
 'email' => $email,

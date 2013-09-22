@@ -15,6 +15,7 @@ include("../processBinar.php");
 	$data['payer_email'] 		= $_POST['payer_email'];
 	$data['custom'] 			= $_POST['custom'];
 	$data['quantity']			= $_POST['quantity'];
+	print_r($_SESSION);
 	  if (isset($_SESSION['uid'])) {
 		  	for ($i = 0; $i < $data['quantity']; $i++) {
 		  		if (isset($_SESSION['binar']) && $_SESSION['binar'] == '1') {

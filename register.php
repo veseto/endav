@@ -28,14 +28,29 @@
 	      <span class="add-on"><i class="icon-thumbs-up"></i></span>
 	      <?php
 		if (!isset($_GET["ref"])) {
-			$_SESSION["ref"] = -1;
+			$_SESSION['ref'] = 0;
 			echo '<input class="span3" id="refMail" name="refMail" type="text" placeholder="referral">';
 			//echo '<input type="text" name="refMail" id="refMail" class="input-block-level" placeholder="refferal email"/> <br>';
 		} else {
-			$_SESSION["ref"] = $_GET["ref"];
-			$refferalUser = $mysqli->query("SELECT email from user where userId=".$_SESSION['ref'])->fetch_array()['email'];
+			$email = "";
+			$res = $mysqli->query("SELECT * from user");
+			$found = false;
+			while ($row = $res->fetch_array()) {
+				if (sha1("rand1".$row['userId']."q1w2e3r4") === $_GET["ref"]) {
+					$_SESSION["ref"] = $row["userId"];		
+					$email = $row['email'];
+					$found = true;
+					break;
+				}
+			}
+			if ($found) {
+				$refferalUser = $mysqli->query("SELECT email from user where userId=".$_SESSION['ref'])->fetch_array()['email'];
 			//echo '<input type="text" name="refMail" id="refMail" class="input-block-level" value='.$refferalUser.' disabled/> <br>';
-			echo '<input class="span3" name="refMail" id="refMail" type="text" value='.$refferalUser.' disabled/>';
+				echo '<input class="span3" name="refMail" id="refMail" type="text" value='.$refferalUser.' disabled/>';
+			} else {
+				echo '<script> alert("Refferal link is not correct") </script>';
+				echo '<input class="span3" id="refMail" name="refMail" type="text" placeholder="referral">';
+			}
 		}
 	?>
 	      
