@@ -33,7 +33,5 @@ include("../processBinar.php");
 		   }
 		    header("Location: ../index.php");
   }
-	//}	
-
-
+	
 ?>
