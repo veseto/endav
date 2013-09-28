@@ -4,6 +4,7 @@
 	include("connection.php");
 	include("constants.php");
 	require_once('includes/phpass-0.3/PasswordHash.php');
+	
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$message = "";
