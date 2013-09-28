@@ -1,9 +1,9 @@
 <?php
-  include ("../security.php");
-  sec_session_start();
-include('../constants.php');
-include("../processBinar.php");
-include("../connection.php");
+  	include ("../security.php");
+  	sec_session_start();
+	include('../constants.php');
+	include("../processBinar.php");
+	include("../connection.php");
 	
 	  if (isset($_SESSION['uid'])) {
 			$q0 = "INSERT INTO `paymets`(`paymentId`, `paymentDate`, `paymentStatus`, `paymentType`, `paymentFee`, `tax`, `payerId`, `payerEmail`, `firstName`, `lastName`, `payerStatus`, `quantity`, `intemNumber`, `currency`, `itemName`, `finalPrice`, `shipping`, `auth`, `verifySign`, `business`, `receiverEmail`, `receiverId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
