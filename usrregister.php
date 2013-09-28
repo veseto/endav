@@ -1,6 +1,6 @@
 <?php
-	  include ("security.php");
-  sec_session_start();
+	include ("security.php");
+  	sec_session_start();
 	include("connection.php");
 	include("constants.php");
 	require_once('includes/phpass-0.3/PasswordHash.php');
