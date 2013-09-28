@@ -21,8 +21,7 @@
 		$password = $mysqli->real_escape_string($password);
 		$email = $mysqli->real_escape_string($email);
 		$hasher = new PasswordHash(8, false);
-		$hashedPassword = $hasher->HashPassword($password);
-		
+		$hashedPassword = $hasher->HashPassword($password);	
 		$q="SELECT COUNT(userId) FROM user where email='$email'";
 		$count = $mysqli->query($q)->fetch_array()[0];
 		if ($count === NULL || $count === '0') {
