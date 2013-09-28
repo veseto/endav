@@ -65,30 +65,39 @@
 			$index = $current['bIndex'];
 			if ($current['child0'] === NULL) {
 				$newIndex = $index * 2 + 1;
-				$strarray1 = addBinarUserBonusArray1($newIndex);
-				$strarray2 = addBinarUserBonusArray2($newIndex);
+				$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
+				$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
 				$id=$current['userId'];
-				$q="INSERT INTO relations_binar (userId, child0, child1, bIndex, bonusArray1, bonusArray2) values ($userId, NULL, NULL, $newIndex, '".$strarray1."', '".$strarray2."')";
-				$mysqli->query($q);
-				$q1 = "UPDATE relations_binar SET child0=$userId WHERE bIndex=$index";
-				$mysqli->query($q1);
-				$mysqli->query("UPDATE machine_current_states SET lastServedBinar=$index");
-				$mysqli->query("UPDATE user SET binar=1 WHERE userId=$userId");
-				updateUplines($newIndex);
-				return "OK";
+				$q = "call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 0)";
+				echo $q;
+				if ($mysqli->query($q)) {
+					updateUplines($newIndex);
+					return "OK";
+				}
+				//$q="INSERT INTO relations_binar (userId, child0, child1, bIndex, bonusArray1, bonusArray2) values ($userId, NULL, NULL, $newIndex, '".$strarray1."', '".$strarray2."')";
+				//$mysqli->query($q);
+				//$q1 = "UPDATE relations_binar SET child0=$userId WHERE bIndex=$index";
+				//$mysqli->query($q1);
+				//$mysqli->query("UPDATE machine_current_states SET lastServedBinar=$index");
+				//$mysqli->query("UPDATE user SET binar=1 WHERE userId=$userId");
+				
 			} else if ($current['child1'] === NULL) {
 				$newIndex = $index * 2 + 2;
-				$strarray1 = addBinarUserBonusArray1($newIndex);
-				$strarray2 = addBinarUserBonusArray2($newIndex);
+				$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
+				$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
 				$id=$current['userId'];
-				$q="INSERT INTO relations_binar (userId, child0, child1, bIndex, bonusArray1, bonusArray2) values ($userId, NULL, NULL, $newIndex, '".$strarray1."', '".$strarray2."')";
-				$mysqli->query($q);
-				$q1 = "UPDATE relations_binar SET child1=$userId WHERE bIndex=$index";
-				$mysqli->query($q1);
-				$mysqli->query("UPDATE machine_current_states SET lastServedBinar=$index");
-				$mysqli->query("UPDATE user SET binar=1 WHERE userId=$userId");
-				updateUplines($newIndex);
-				return "OK"; 
+				if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 1)")) {
+					updateUplines($newIndex);
+					return "OK";
+				}
+				//$q="INSERT INTO relations_binar (userId, child0, child1, bIndex, bonusArray1, bonusArray2) values ($userId, NULL, NULL, $newIndex, '".$strarray1."', '".$strarray2."')";
+				//$mysqli->query($q);
+				//$q1 = "UPDATE relations_binar SET child1=$userId WHERE bIndex=$index";
+				//$mysqli->query($q1);
+				//$mysqli->query("UPDATE machine_current_states SET lastServedBinar=$index");
+				//$mysqli->query("UPDATE user SET binar=1 WHERE userId=$userId");
+				//updateUplines($newIndex);
+				//return "OK"; 
 			} else {
 				$index +=1;
 				$res = $mysqli->query("SELECT * FROM relations_binar WHERE bIndex=$index");
@@ -110,26 +119,34 @@
 
 			if ($position['child0'] === NULL) {
 				$newIndex = $index * 2 + 1;
-				$strarray1 = addBinarUserBonusArray1($newIndex);
-				$strarray2 = addBinarUserBonusArray2($newIndex);
+				$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
+				$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
 				$id=$position['userId'];
-				$q="INSERT INTO relations_binar (userId, child0, child1, bIndex, bonusArray1, bonusArray2) values ($userId, NULL, NULL, $newIndex, '".$strarray1."', '".$strarray2."')";
-				$mysqli->query($q);
-				$mysqli->query("UPDATE relations_binar SET child0=$userId WHERE bIndex=$index");
-				$mysqli->query("UPDATE user SET binar=1 WHERE userId=$userId");
-				updateUplines($newIndex);
-				return "OK";
+				if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 0)")) {
+					updateUplines($newIndex);
+					return "OK";
+				}
+				//$q="INSERT INTO relations_binar (userId, child0, child1, bIndex, bonusArray1, bonusArray2) values ($userId, NULL, NULL, $newIndex, '".$strarray1."', '".$strarray2."')";
+				//$mysqli->query($q);
+				//$mysqli->query("UPDATE relations_binar SET child0=$userId WHERE bIndex=$index");
+				//$mysqli->query("UPDATE user SET binar=1 WHERE userId=$userId");
+				//updateUplines($newIndex);
+				//return "OK";
 			} else if ($position['child1'] === NULL) {
 				$newIndex = $index * 2 + 2;
-				$strarray1 = addBinarUserBonusArray1($newIndex);
-				$strarray2 = addBinarUserBonusArray2($newIndex);
+				$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
+				$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
 				$id=$position['userId'];
-				$q="INSERT INTO relations_binar (userId, child0, child1, bIndex, bonusArray1, bonusArray2) values ($userId, NULL, NULL, $newIndex, '".$strarray1."', '".$strarray2."')";
-				$mysqli->query($q);
-				$mysqli->query("UPDATE relations_binar SET child1=$userId WHERE bIndex=$index");
-				$mysqli->query("UPDATE user SET binar=1 WHERE userId=$userId");
-				updateUplines($newIndex);
-				return "OK";
+				if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 1)")) {
+					updateUplines($newIndex);
+					return "OK";
+				}
+				//$q="INSERT INTO relations_binar (userId, child0, child1, bIndex, bonusArray1, bonusArray2) values ($userId, NULL, NULL, $newIndex, '".$strarray1."', '".$strarray2."')";
+				//$mysqli->query($q);
+				//$mysqli->query("UPDATE relations_binar SET child1=$userId WHERE bIndex=$index");
+				//$mysqli->query("UPDATE user SET binar=1 WHERE userId=$userId");
+				//updateUplines($newIndex);
+				//return "OK";
 			} else {
 				$newIndex = $index * 2 + 1;
 				array_push($children, $newIndex);

@@ -1,5 +1,6 @@
 <?php
-	session_start();
+	  include ("security.php");
+  sec_session_start();
 	include("connection.php");
 	include("constants.php");
 	require_once('includes/phpass-0.3/PasswordHash.php');
@@ -8,8 +9,13 @@
 	$message = "";
 	$refferal = $_SESSION["ref"];
 	if (isset($_POST['refMail']) && $_POST['refMail'] != "") {
-		$refferal = $mysqli->query("SELECT userId From user where email='".$_POST['refMail']."'")->fetch_array()['userId'];
-		$_SESSION['ref'] = $refferal;
+		if ($stmt = $mysqli->prepare("SELECT userId From user where email=?")) {
+			$stmt -> bind_param("s", $_POST['refMail']);
+			$stmt -> execute();
+			$stmt -> bind_result($refferal);
+			$_SESSION['ref'] = $refferal;
+			$stmt -> close();	
+		}
 	}
 	if (!empty($email) && !empty($password)) {
 		$password = $mysqli->real_escape_string($password);

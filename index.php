@@ -12,13 +12,13 @@
     include('makeMoney.php');
   } else {
     if (isset($_SESSION['msg'])) {
-    echo $_SESSION['msg'];
+    echo $lang[$_SESSION['msg']];
     unset($_SESSION['msg']);
     }
 ?>
       <div class="jumbotron">
-        <h1>Welcome to ENDAV</h1>
-        <p class="lead">Here some explanation how everyone could make money.</p>
+        <h1><?php echo $lang["WELCOME"];?></h1>
+        <p class="lead"><?php echo $lang["LONG_HEADER"];?></p>
         <p><div class="bs-example" style="padding-bottom: 24px;">
               <a data-toggle="modal" href="register.php" class="btn btn-primary btn-large">Register</a>
           </div></p>

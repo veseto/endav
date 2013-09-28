@@ -1,5 +1,6 @@
 <?php
-session_start();
+  include ("security.php");
+  sec_session_start();
 include("connection.php");
 
 function post_request($url, $data, $referer='') {

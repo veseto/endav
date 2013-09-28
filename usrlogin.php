@@ -1,38 +1,40 @@
 <?php
-	session_start();
+	  include ("security.php");
+  sec_session_start();
 	include("connection.php");
 	require_once('includes/phpass-0.3/PasswordHash.php');
 	$email=$_POST["email"];
 	$password=$_POST["password"];
 	if (!empty($email) && !empty($password)) {
 		$hasher = new PasswordHash(8, false);
-		$q="SELECT * FROM user WHERE email='".$mysqli->real_escape_string($email)."'";
-		$result=$mysqli->query($q);
-		$array=$result->fetch_array();
-		$hashedPassword = $array['password'];
-		if ($hasher->CheckPassword($mysqli->real_escape_string($password), $hashedPassword)) {
-		if ($array['activated'] === '1') {
-				$_SESSION["uid"] = $array["userId"];
-				$_SESSION['binar'] = $array["binar"];
-				$_SESSION['email'] = $array["email"];
-				if ($array["refferal"] != '0') {
-					$_SESSION['ref'] = $array["refferal"];
+		//$q="SELECT * FROM user WHERE email='".$mysqli->real_escape_string($email)."'";
+		if ($stmt = $mysqli->prepare("SELECT userId, binar, email, refferal, activated, password FROM user WHERE email=?")) {
+			$stmt->bind_param("s", $email);
+			$stmt->execute();
+			$stmt->bind_result($userId, $binar, $m, $refferal, $activated, $hashedPassword);
+			$stmt->fetch();
+			if ($userId) {
+				 if ($hasher->CheckPassword($password, $hashedPassword)) {
+					if ($activated === 1) {
+						$_SESSION["uid"] = $userId;
+						$_SESSION['binar'] = $binar;
+						$_SESSION['email'] = $m;
+						if ($refferal != '0' && $refferal != 0) {
+							$_SESSION['ref'] = $refferal;
+						}		
+					} else if ($activated === 0) {
+						$msg = "your account is not activated";
+					} 
+				} else {
+					$msg = "wrong password";
 				}
-				
-		} else if ($array['activated'] === '0') {
-			$msg = "your account is not activated";
-		} else {
-			$q1 = "SELECT * FROM user WHERE email='".$mysqli->real_escape_string($email)."'";
-			$result1=$mysqli->query($q1);
-			$array1=$result1->fetch_array();
-			if ($array1) {
-				$msg = "wrong password";
 			} else {
-				$msg = "no such user";
+				$msg = "MISSING_USER";
 			}
-		}
-		}
-		//$_SESSION['msg'] = $msg;
+		$stmt->close();
+	}
+		//print_r($_SESSION);
+		$_SESSION['msg'] = $msg;
 		header('Location: index.php') ;
 	}
 ?>

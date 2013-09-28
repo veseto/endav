@@ -1,6 +1,7 @@
 <?php
-session_start();
-include('../constants.php');
+  include ("../security.php");
+  sec_session_start();
+  include('../constants.php');
 include("../processBinar.php");
 
 

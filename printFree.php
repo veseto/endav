@@ -1,5 +1,6 @@
 <?php
-	session_start();
+	  include ("security.php");
+  sec_session_start();
 	//header('Content-type:application/javascript');
 
 	function addElement(&$tree, $elementId) {
