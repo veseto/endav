@@ -41,7 +41,7 @@
 			exit;
 		}
 	} else {
-		$message = "Registration failed";
+		$message = "Registration failed.";
 		header('Location: register.php');
 	}
 ?>
