@@ -3,6 +3,7 @@
   sec_session_start();
   include ("common.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
