@@ -14,9 +14,9 @@
     <title>endav.com</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="js/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="sticky-footer.css" rel="stylesheet">
-    <link href="signin.css" rel="stylesheet">
+    <!--<link href="signin.css" rel="stylesheet"> -->
 
     <!-- Custom styles for this template -->
     <link href="jumbotron-narrow.css" rel="stylesheet">

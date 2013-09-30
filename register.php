@@ -81,7 +81,6 @@
 	</form>
 	</div>
 
-
 <style type="text/css">
 #registerForm label.error {
 	margin-left: 10px;
