@@ -33,20 +33,14 @@
 			//echo '<input type="text" name="refMail" id="refMail" class="input-block-level" placeholder="refferal email"/> <br>';
 		} else {
 			$email = "";
-			$res = $mysqli->query("SELECT * from user");
-			$found = false;
-			while ($row = $res->fetch_array()) {
-				if (sha1("rand1".$row['userId']."q1w2e3r4") === $_GET["ref"]) {
-					$_SESSION["ref"] = $row["userId"];		
-					$email = $row['email'];
-					$found = true;
-					break;
-				}
-			}
-			if ($found) {
-				$refferalUser = $mysqli->query("SELECT email from user where userId=".$_SESSION['ref'])->fetch_array()['email'];
-			//echo '<input type="text" name="refMail" id="refMail" class="input-block-level" value='.$refferalUser.' disabled/> <br>';
+			//$ref = "'".$_GET['ref']."'";
+			if ($stmt = $mysqli->prepare("SELECT email from user where refLink=?")){
+				$stmt->bind_param("s", $_GET['ref']);
+				$stmt->bind_result($refferalUser);
+				$stmt->execute();
+				$stmt->fetch();
 				echo '<input class="span3" name="refMail" id="refMail" type="text" value='.$refferalUser.' disabled/>';
+				$stmt->close();
 			} else {
 				echo '<script> alert("Refferal link is not correct") </script>';
 				echo '<input class="span3" id="refMail" name="refMail" type="text" placeholder="referral">';

@@ -73,6 +73,8 @@
 				if ($mysqli->query($q)) {
 					updateUplines($newIndex);
 					return "OK";
+				} else {
+					echo $mysqli->error;
 				}
 			} else if ($current['child1'] === NULL) {
 				$newIndex = $index * 2 + 2;
@@ -82,7 +84,9 @@
 				if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 1)")) {
 					updateUplines($newIndex);
 					return "OK";
-				} 
+				} else {
+					echo $mysqli->error;
+				}
 			} else {
 				$index +=1;
 				$res = $mysqli->query("SELECT * FROM relations_binar WHERE bIndex=$index");

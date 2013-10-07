@@ -15,6 +15,7 @@
 			$stmt -> bind_param("s", $_POST['refMail']);
 			$stmt -> execute();
 			$stmt -> bind_result($refferal);
+			$stmt -> fetch();
 			$_SESSION['ref'] = $refferal;
 			$stmt -> close();	
 		}

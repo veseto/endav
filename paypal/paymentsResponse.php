@@ -12,7 +12,7 @@
 				$stmt->execute();
 				$stmt->close();
 			}
-		  	for ($i = 0; $i < $data['quantity']; $i++) {
+		  	for ($i = 0; $i < $_POST['quantity']; $i++) {
 		  		if (isset($_SESSION['binar']) && $_SESSION['binar'] == '1') {
 		      		$state = addBinarUserWithReffer($_SESSION['uid'], $_SESSION['uid']);
 			    } else if (isset($_SESSION['ref'])) {
