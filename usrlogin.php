@@ -24,13 +24,13 @@
 							$_SESSION['ref'] = $refferal;
 						}		
 					} else if ($activated === 0) {
-						$msg = "your account is not activated";
+						$msg = 'ACCOUNT_NOT_ACTIVE';
 					} 
 				} else {
-					$msg = "wrong password";
+					$msg = 'WRONG_PASSWORD';
 				}
 			} else {
-				$msg = "MISSING_USER";
+				$msg = 'MISSING_USER';
 			}
 		$stmt->close();
 	}

@@ -1,19 +1,14 @@
 <?php
 	include("header.php");
 	include("connection.php");
-
-	$_SESSION = array();
 ?>
 
 <?php
-	$code = (isset($_SESSION['code']) ? $_SESSION['code'] : null);
-	if ($code === 1) {
-		echo "Email already in use";
-	}
-	unset($_SESSION['code']);
 	if (isset($_SESSION['msg'])) {
-		echo $_SESSION['msg'];
-	}
+    	echo $lang[$_SESSION['msg']];
+    }
+	$_SESSION = array();
+
 ?>
 
 <script src="js/validation/lib/jquery.js"></script>

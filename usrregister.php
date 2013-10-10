@@ -36,19 +36,19 @@
 				$headers = "";
 				$mailBody = "To confirm your account please follow the link: ".$url."confirm.php?id=$key\nYour password is $password";
 				mail($email,$subject,$mailBody,$headers);
-				$_SESSION['msg'] = "Registration successful!";
+				$_SESSION['msg'] = 'REGISTRATION_SUCCESS';
 				header('Location: index.php');
 				exit;
 			} else {
 				echo $mysqli->error;
 			}
 		} else {
-			$_SESSION['msg'] = "Email in use";
+			$_SESSION['msg'] = 'EMAIL_IN_USE';
 			header('Location: register.php');
 			exit;
 		}
 	} else {
-		$message = "Registration failed.";
+		$_SESSION['msg'] = 'REGISTRATION_FAILED';
 		header('Location: register.php');
 	}
 ?>

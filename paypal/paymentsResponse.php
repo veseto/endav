@@ -23,6 +23,7 @@
 			  	}
 			    if ($state === "OK") {
 			      $_SESSION['binar'] = '1';
+			      $_SESSION['msg'] = 'BUY_SUCCESS';
 			    }
 		   }
 		   header("Location: ../index.php");

@@ -19,7 +19,7 @@
 				$stmt->close();
 				$_SESSION = array();
 				$_SESSION['status'] = 'OK';
-				$_SESSION['msg'] = "Activation successful";
+				$_SESSION['msg'] = 'ACCOUNT_ACTIVATION_OK';
 				header('Location: index.php');
 			} else {
 				echo $mysqli->error;

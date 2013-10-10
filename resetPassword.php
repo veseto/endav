@@ -1,6 +1,5 @@
 <?php
 	include("header.php");
-	include("connection.php");
 
 ?>
 <script src="js/validation/lib/jquery.js"></script>

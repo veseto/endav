@@ -12,8 +12,8 @@
     include('makeMoney.php');
   } else {
     if (isset($_SESSION['msg'])) {
-    echo $lang[$_SESSION['msg']];
-    unset($_SESSION['msg']);
+      echo $lang[$_SESSION['msg']];
+      unset($_SESSION['msg']);
     }
 ?>
       <div class="jumbotron">

@@ -19,7 +19,7 @@
 			$stmt -> execute();
 			$stmt -> close();
 			mail($email,$subject,$mailBody,$headers);
-			$_SESSION['msg'] = "Reset mail sent";
+			$_SESSION['msg'] = 'PASS_RESET_MAIL_SENT';
 			header('Location: index.php');
 		
 		}
@@ -45,7 +45,7 @@
 			$stmt->bind_param("ss", $hashedPassword, $_POST['updemail']);
 			$stmt->execute();
 			$stmt->close();
-			$_SESSION["msg"] = "password updated";
+			$_SESSION["msg"] = 'PASS_CHANGED';
 			header("Location: index.php");
 			exit;
 		}
