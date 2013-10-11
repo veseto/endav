@@ -1,5 +1,8 @@
 <?php
 	include("header.php");
+	if (isset($_COOKIE['endav'])) {
+  		header("Location: usrlogin.php");
+  	}
 ?>
 
 <script src="js/validation/lib/jquery.js"></script>
@@ -11,7 +14,7 @@
   			<input type="text" name="email" id="email" class="input-block-level" placeholder="email"/>
 			<input type="password" name="password" id="password" class="input-block-level" placeholder="password"/>
 	        <label class="checkbox">
-	          <input type="checkbox" value="remember-me"> Remember me
+	          <input type="checkbox" id="remember-me" name="remember-me" value="ok"> Remember me
 	        </label>
 	        <button class="btn btn-large btn-primary btn-block" type="submit">Log in</button>
 		</form>
