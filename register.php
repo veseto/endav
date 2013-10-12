@@ -66,6 +66,9 @@
 	    <label class="checkbox">
 	      <input type="checkbox" name="agree" id="agree" value="agree"> I agree with <a href="#">terms of use</a>.
 	    </label>
+	    <label class="checkbox">
+	      <input type="checkbox" name="advertiser" id="advertiser" value="advertiser"> I want to be advertizer.
+	    </label>
 		<button class="btn btn-success" name="submit" type="submit">SIGN UP</button>
 	</form>
 	</div>
