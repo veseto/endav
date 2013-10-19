@@ -11,8 +11,10 @@
     }
     include('makeMoney.php');
   } else {
-    if (isset($_SESSION['msg'])) {
+    if (isset($_SESSION['msg']) && $_SESSION['msg'] != "") {
+      echo "  <div class='alert alert-success'>";
       echo $lang[$_SESSION['msg']];
+      echo "</div>";
       unset($_SESSION['msg']);
     }
 ?>

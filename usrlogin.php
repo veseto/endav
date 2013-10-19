@@ -21,7 +21,8 @@
 					$_SESSION['ref'] = $refferal;
 				}		
 			} else if ($activated === 0) {
-				$msg = 'ACCOUNT_NOT_ACTIVE';
+				$_SESSION['msg'] = 'ACCOUNT_NOT_ACTIVE';
+				header("Location: login.php");
 			}
   		}
   	} else {
@@ -51,13 +52,19 @@
 								$_SESSION['ref'] = $refferal;
 							}		
 						} else if ($activated === 0) {
-							$msg = 'ACCOUNT_NOT_ACTIVE';
+							$_SESSION['msg'] = 'ACCOUNT_NOT_ACTIVE';
+							header("Location: login.php");
+							exit;
 						} 
 					} else {
-						$msg = 'WRONG_PASSWORD';
+						$_SESSION['msg'] = 'WRONG_PASSWORD';
+						header("Location: login.php");
+						exit;
 					}
 				} else {
-					$msg = 'MISSING_USER';
+					$_SESSION['msg'] = 'MISSING_USER';
+					header("Location: login.php");
+					exit;
 				}
 			$stmt->close();
 		}
@@ -65,6 +72,6 @@
 		}
 	}
 	//print_r($_SESSION);
-			$_SESSION['msg'] = $msg;
+			//$_SESSION['msg'] = $msg;
 			header('Location: index.php') ;
 ?>

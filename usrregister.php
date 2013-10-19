@@ -29,9 +29,15 @@
 		$count = $mysqli->query($q)->fetch_array()[0];
 		if ($count === NULL || $count === '0') {
 			$key = keyGen($email);
-			$q1 = "INSERT INTO user (email, password, refferal, activated, binar, salt) Values ('$email','".$hashedPassword."', $refferal, 0, 0, '".$key."')";
-			if ($mysqli -> query($q1)) {
-				$userId=$mysqli->insert_id;
+			$advertiser = 0;
+			$zero = 0;
+			if (isset($_POST['advertiser'])) {
+				$advertiser = 1;
+			}
+			if ($stmt = $mysqli -> prepare("INSERT INTO user (email, password, refferal, activated, binar, salt, advertiser) Values (?,?,?, 0, 0, ?, ?)")){
+				$stmt -> bind_param("ssisi", $email, $hashedPassword, $refferal, $key, $advertiser);
+				$stmt -> execute();
+				$stmt -> close();
 				$subject = "Confirm registration";
 				$headers = "";
 				$mailBody = "To confirm your account please follow the link: ".$url."confirm.php?id=$key\nYour password is $password";
@@ -40,7 +46,7 @@
 				header('Location: index.php');
 				exit;
 			} else {
-				echo $mysqli->error;
+				echo $stmt->error;
 			}
 		} else {
 			$_SESSION['msg'] = 'EMAIL_IN_USE';

@@ -2,15 +2,24 @@
 	include("header.php");
 	include("connection.php");
 ?>
-
 <?php
 	if (isset($_SESSION['msg'])) {
-    	echo $lang[$_SESSION['msg']];
-    }
-	$_SESSION = array();
+		echo "	<div class='alert alert-error'>";
+		echo $lang[$_SESSION['msg']];
+		echo "</div>";
+		unset($_SESSION['msg']);
+	}
 
+	if (isset($_SESSION['uid'])) {
+		$page = $_SERVER['PHP_SELF'];
+		setcookie("endav", "", time() - 36000);
+		$_SESSION = array();
+		if (isset($_GET['ref'])) {
+			$page = $page."?ref=".$_GET['ref'];
+		}
+		header("Location: $page");
+	}
 ?>
-
 <script src="js/validation/lib/jquery.js"></script>
 <script src="js/validation/jquery.validate.js"></script>
 <script src="js/validation/additional-methods.js"></script>
@@ -22,7 +31,7 @@
 	    <div class="input-prepend">
 	      <span class="add-on"><i class="icon-thumbs-up"></i></span>
 	      <?php
-		if (!isset($_GET["ref"])) {
+		if (!isset($_GET['ref'])) {
 			$_SESSION['ref'] = 0;
 			echo '<input class="span3" id="refMail" name="refMail" type="text" placeholder="referral">';
 			//echo '<input type="text" name="refMail" id="refMail" class="input-block-level" placeholder="refferal email"/> <br>';
@@ -31,6 +40,7 @@
 			//$ref = "'".$_GET['ref']."'";
 			if ($stmt = $mysqli->prepare("SELECT email from user where refLink=?")){
 				$stmt->bind_param("s", $_GET['ref']);
+				//setcookie("ref", "", time() - 36000);
 				$stmt->bind_result($refferalUser);
 				$stmt->execute();
 				$stmt->fetch();
@@ -67,7 +77,7 @@
 	      <input type="checkbox" name="agree" id="agree" value="agree"> I agree with <a href="#">terms of use</a>.
 	    </label>
 	    <label class="checkbox">
-	      <input type="checkbox" name="advertiser" id="advertiser" value="advertiser"> I want to be advertizer.
+	      <input type="checkbox" name="advertiser" id="advertiser" value="1"> I want to be advertiser.
 	    </label>
 		<button class="btn btn-success" name="submit" type="submit">SIGN UP</button>
 	</form>

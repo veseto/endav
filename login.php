@@ -1,5 +1,11 @@
 <?php
 	include("header.php");
+	if (isset($_SESSION['msg']) && $_SESSION['msg'] != "") {
+		echo "  <div class='alert alert-error'>";
+      	echo $lang[$_SESSION['msg']];
+      	echo "</div>";
+      	unset($_SESSION['msg']);
+	}
 	if (isset($_COOKIE['endav'])) {
   		header("Location: usrlogin.php");
   	}
