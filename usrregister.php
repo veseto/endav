@@ -9,7 +9,8 @@
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$message = "";
-	$refferal = $_SESSION["ref"];
+	$refferal = 0;
+	print_r($_POST);
 	if (isset($_POST['refMail']) && $_POST['refMail'] != "") {
 		if ($stmt = $mysqli->prepare("SELECT userId From user where email=?")) {
 			$stmt -> bind_param("s", $_POST['refMail']);

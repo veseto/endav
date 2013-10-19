@@ -44,7 +44,9 @@
 				$stmt->bind_result($refferalUser);
 				$stmt->execute();
 				$stmt->fetch();
-				echo '<input class="span3" name="refMail" id="refMail" type="text" value='.$refferalUser.' disabled/>';
+				echo '<input class="span3" name="r" id="r" type="text" value='.$refferalUser.' disabled/>';
+				echo '<input name="refMail" id="refMail" type="hidden" value='.$refferalUser.'>';
+
 				$stmt->close();
 			} else {
 				echo '<script> alert("Refferal link is not correct") </script>';

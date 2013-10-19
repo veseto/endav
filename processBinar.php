@@ -99,38 +99,43 @@
 
 	function addBinarUserWithReffer($userId, $reffer) {
 		include("connection.php");
-		$q2 = "SELECT bIndex FROM relations_binar WHERE userId=$reffer ORDER BY bIndex ASC";
-		$bInd = $mysqli->query($q2)->fetch_array()['0'];
-		$children = array('0' => $bInd);
-		for($i = 0; $i < count($children); $i ++) {
-			$index = $children[$i];
-			$position = $mysqli->query("SELECT * FROM relations_binar WHERE bIndex=$index")->fetch_array();
+		$q3 = "SELECT binar from user where userId=$reffer";
+		$result = $mysqli -> query($q3)->fetch_array();
+		if ($result[0] == 1 || $result == '1') {
+			$q2 = "SELECT bIndex FROM relations_binar WHERE userId=$reffer ORDER BY bIndex ASC";
+			$bInd = $mysqli->query($q2)->fetch_array()['0'];
+			$children = array('0' => $bInd);
+			for($i = 0; $i < count($children); $i ++) {
+				$index = $children[$i];
+				$position = $mysqli->query("SELECT * FROM relations_binar WHERE bIndex=$index")->fetch_array();
 
-			if ($position['child0'] === NULL) {
-				$newIndex = $index * 2 + 1;
-				$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
-				$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
-				$id=$position['userId'];
-				if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 0)")) {
-					updateUplines($newIndex);
-					return "OK";
+				if ($position['child0'] === NULL) {
+					$newIndex = $index * 2 + 1;
+					$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
+					$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
+					$id=$position['userId'];
+					if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 0)")) {
+						updateUplines($newIndex);
+						return "OK";
+					}
+				} else if ($position['child1'] === NULL) {
+					$newIndex = $index * 2 + 2;
+					$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
+					$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
+					$id=$position['userId'];
+					if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 1)")) {
+						updateUplines($newIndex);
+						return "OK";
+					}
+				} else {
+					$newIndex = $index * 2 + 1;
+					array_push($children, $newIndex);
+					array_push($children, $newIndex + 1);
 				}
-			} else if ($position['child1'] === NULL) {
-				$newIndex = $index * 2 + 2;
-				$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
-				$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
-				$id=$position['userId'];
-				if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 1)")) {
-					updateUplines($newIndex);
-					return "OK";
-				}
-			} else {
-				$newIndex = $index * 2 + 1;
-				array_push($children, $newIndex);
-				array_push($children, $newIndex + 1);
 			}
+		} else {
+			addBinarUser($userId);
 		}
-
 	}
 	
 ?>

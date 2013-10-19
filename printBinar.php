@@ -30,7 +30,7 @@
 
 	$tree = array();
 
-	if (isset($_SESSION['uid']) && isset($_SESSION['binar']) && $_SESSION['binar'] === '1') {
+	if (isset($_SESSION['uid'])) {
 		$uid = $_SESSION['uid'];
 		$q="SELECT bIndex from relations_binar where userId = $uid ORDER BY bIndex ASC";
 		$index = $mysqli->query($q)->fetch_array()[0];
