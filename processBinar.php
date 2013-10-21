@@ -68,7 +68,7 @@
 				$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
 				$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
 				$id=$current['userId'];
-				$q = "call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 0)";
+				$q = "call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 0, 1)";
 				echo $q;
 				if ($mysqli->query($q)) {
 					updateUplines($newIndex);
@@ -81,7 +81,7 @@
 				$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
 				$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
 				$id=$current['userId'];
-				if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 1)")) {
+				if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 1, 1)")) {
 					updateUplines($newIndex);
 					return "OK";
 				} else {
@@ -114,7 +114,7 @@
 					$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
 					$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
 					$id=$position['userId'];
-					if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 0)")) {
+					if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 0, 0)")) {
 						updateUplines($newIndex);
 						return "OK";
 					}
@@ -123,7 +123,7 @@
 					$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
 					$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
 					$id=$position['userId'];
-					if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 1)")) {
+					if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 1, 0)")) {
 						updateUplines($newIndex);
 						return "OK";
 					}
