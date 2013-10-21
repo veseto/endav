@@ -13,7 +13,8 @@
 				$stmt->close();
 			}
 		  	for ($i = 0; $i < $_POST['quantity']; $i++) {
-		  		if (isset($_SESSION['binar']) && $_SESSION['binar'] == '1') {
+		  		$bin = $mysqli->query("select binar from user where userId=".$_SESSION['uid'])->fetch_array()[0];
+		  		if ($bin == 1 || $bin =="1") {
 		      		$state = addBinarUserWithReffer($_SESSION['uid'], $_SESSION['uid']);
 			    } else if (isset($_SESSION['ref'])) {
 			  		$state = addBinarUserWithReffer($_SESSION['uid'], $_SESSION['ref']);
@@ -22,7 +23,6 @@
 			    	
 			  	}
 			    if ($state === "OK") {
-			      $_SESSION['binar'] = '1';
 			      $_SESSION['msg'] = 'BUY_SUCCESS';
 			    }
 		   }
