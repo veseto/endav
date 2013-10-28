@@ -3,6 +3,8 @@
 	$levelsToBonus1 = 3;
 	$levelsToBonus2 = 4;
 
+	$maxBinarPositions = 10;
+
 	//Easy access constants
 	$url = "http://dev.endav.com/";
 

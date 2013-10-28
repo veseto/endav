@@ -56,6 +56,7 @@
 	}
 	function addBinarUser($userId) {
 		include("connection.php");
+		include("constants.php");
 		$array = $mysqli->query("SELECT * FROM machine_current_states")->fetch_array();
 		$index = $array['lastServedBinar'];
 		$added = False;

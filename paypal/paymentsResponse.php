@@ -26,7 +26,7 @@
 			      $_SESSION['msg'] = 'BUY_SUCCESS';
 			    }
 		   }
-		   header("Location: ../index.php");
+		   header("Location: ../pay.php");
   }
 	
 ?>

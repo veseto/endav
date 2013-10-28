@@ -13,4 +13,5 @@ $lang['WRONG_PASSWORD'] = "Wrong password";
 $lang['ACCOUNT_NOT_ACTIVE'] = "Your account is not activated";
 $lang['BUY_SUCCESS'] = "You successfully purchased binar position";
 $lang['ACCOUNT_ACTIVATION_OK'] = "Your account is activated";
+$lang['MAX_BINAR_POSITIONS'] = "You have reached maximum positions that you can buy by yourself";
 ?>

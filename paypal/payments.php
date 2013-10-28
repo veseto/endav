@@ -14,10 +14,9 @@ $notify_url = "http://dev.endav.com/paypal/paymentsResponse.php";
 
 // Include Functions
 include("functions.php");
-
-//Database Connection
-$link = mysql_connect($host, $user, $pass);
-mysql_select_db($db_name);
+include("../connection.php");
+$count = $mysqli->query("SELECT COUNT(*) from relations_binar where userId=".$_SESSION['uid'])->fetch_array()[0];
+if ($count + $_POST['quantity'] <= $maxBinarPositions) {
 
 // Check if paypal request or response
 
@@ -48,7 +47,11 @@ mysql_select_db($db_name);
 	// Redirect to paypal IPN
 	header('location:https://www.sandbox.paypal.com/cgi-bin/webscr'.$querystring);
 	exit();
-
+} else {
+	$_SESSION['msg'] = "MAX_BINAR_REACHED";
+	header("Location: ../pay.php");
+	exit;
+}
 
 	
 ?>
