@@ -27,6 +27,7 @@ for ($i = 2; $i < 5; $i ++) {
 	echo "<option value=$i>$i</option>";
 }
 
+
 }
 if ($count + 1 <= $maxBinarPositions){
 	?>
