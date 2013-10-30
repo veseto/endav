@@ -31,7 +31,7 @@ for ($i = 2; $i < 5; $i ++) {
 }
 if ($count + 1 <= $maxBinarPositions){
 	?>
-	
+	 
 	</select></br>
     <input name="cmd" type="hidden" value="_xclick" />
     <input name="no_note" type="hidden" value="1" />
