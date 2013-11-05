@@ -100,6 +100,7 @@
 
 	function addBinarUserWithReffer($userId, $reffer) {
 		include("connection.php");
+		include("constants.php");
 		$q3 = "SELECT binar from user where userId=$reffer";
 		$result = $mysqli -> query($q3)->fetch_array();
 		if ($result[0] == 1 || $result == '1') {
@@ -109,13 +110,15 @@
 			for($i = 0; $i < count($children); $i ++) {
 				$index = $children[$i];
 				$position = $mysqli->query("SELECT * FROM relations_binar WHERE bIndex=$index")->fetch_array();
-
 				if ($position['child0'] === NULL) {
 					$newIndex = $index * 2 + 1;
 					$strarray1 = "'".addBinarUserBonusArray1($newIndex)."'";
 					$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
 					$id=$position['userId'];
 					if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 0, 0)")) {
+						if ($userId != $reffer) {
+							$mysqli -> query("UPDATE user_money SET cash=cash+$bonusForBinarFriend WHERE userId=$reffer");
+						}
 						updateUplines($newIndex);
 						return "OK";
 					}
@@ -125,6 +128,9 @@
 					$strarray2 = "'".addBinarUserBonusArray2($newIndex)."'";
 					$id=$position['userId'];
 					if ($mysqli->query("call addBinarUser($userId, $index, $newIndex, $strarray1, $strarray2, 1, 0)")) {
+						if ($userId != $reffer) {
+							$mysqli -> query("UPDATE user_money SET cash=cash+$bonusForBinarFriend WHERE userId=$reffer");
+						}
 						updateUplines($newIndex);
 						return "OK";
 					}

@@ -6,7 +6,7 @@
 		} 
 		$q3="INSERT INTO relations_free  (userId, parentId) VALUES ($userId, $refferal)";
 		$mysqli -> query($q3);
-
+		$mysqli -> query("INSERT INTO user_money (userId, cash, inSite) VALUES ($userId, 0, 0)");
 		
 	}
 

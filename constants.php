@@ -4,6 +4,7 @@
 	$levelsToBonus2 = 4;
 
 	$maxBinarPositions = 10;
+	$bonusForBinarFriend = 5;
 
 	//Easy access constants
 	$url = "http://dev.endav.com/";
