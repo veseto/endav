@@ -46,6 +46,10 @@
 ?>  
             <li <?php if ($_SERVER['PHP_SELF']==="/login.php") echo "class='active';"?>><a href="login.php">LOG IN</a></li>
             <li <?php if ($_SERVER['PHP_SELF']==="/register.php") echo "class='active';"?>><a href="register.php" class="text-success"><strong>SIGN UP</strong></a></li>
+            <li> <a href=<?php echo $_SERVER['PHP_SELF']."?lang=en"?>>en</a></li>
+            <li> <a href=<?php echo $_SERVER['PHP_SELF']."?lang=bg"?>>bg</a></li>
+
+            
 <?php
               }
             ?>
