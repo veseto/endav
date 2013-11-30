@@ -6,8 +6,8 @@
 	$maxBinarPositions = 10;
 	$bonusForBinarFriend = 5;
 
-	$persentForParent = 3;
-	$persentForGrandParent = 1.5;
+	$persentForParent = 0.03;
+	$persentForGrandParent = 0.015;
 
 	//Easy access constants
 	$url = "http://dev.endav.com/";
