@@ -28,5 +28,10 @@
 	echo "<br>Country: $country";
 	echo "<br>";
 	echo "Telephone: $telephone";
+
+	$arr = $mysqli->query("SELECT * from user_money where userId='".$_SESSION['uid']."'")->fetch_assoc();
+	echo "<br> Cash money ".$arr['cash'];
+	echo "<br> In site money ".$arr['inSite'];
+	
 	include("footer.php");
 ?>

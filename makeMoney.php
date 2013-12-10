@@ -9,6 +9,7 @@
 			<a data-toggle="modal" href="pay.php" class="btn btn-success">Proceed</a>
 		</div>
 		<?php
+		include("adverts.php");
 	}
 
 

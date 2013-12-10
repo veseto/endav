@@ -16,6 +16,7 @@ $lang = $_SESSION['lang'];
 else if(isSet($_COOKIE['lang']))
 {
 $lang = $_COOKIE['lang'];
+$_SESSION['lang'] = $lang;
 }
 else
 {
@@ -36,5 +37,5 @@ switch ($lang) {
 
 }
 
-include_once 'langs/'.$lang_file;
+include_once 'lang/'.$lang_file;
 ?>

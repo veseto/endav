@@ -10,19 +10,8 @@
 		$mysqli->query("update user_money set cash=cash+($money*$persentForGrandParent) where userId='".$relFree['grandParentId']."'");
 	}
 ?>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=695374143814932";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-	
-
-</script>
-<form>
-	<div class="fb-like" data-href="http://i.imgur.com/zDOmQvK.jpg" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
+<form name="form" id="form" method="POST">
+  <input type="hidden" name="money" value="10"/>
 </form>
 
 <div id="player"></div>
@@ -37,17 +26,26 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '390',
         width: '640',
-        videoId: 'Ahg6qcgoay4',
-        playerVars: {'disablekb' : 1, 'enablejsapi' : 1}, //'controls' : 0, 
+        videoId: 'HHfOejlvVsY',
+        playerVars: {'controls' : 0,'disablekb' : 1, 'enablejsapi' : 1}, //'controls' : 0, 
         events: {'onStateChange': onPlayerStateChange}
     }); // create the <iframe> (and YouTube player)
 }
 
 function onPlayerStateChange(event) { 
     if(event.data === 0) {
-    	alert(event.data);
-    	var firstScriptTag = document.getElementsByTagName('player')[0];
-    	firstScriptTag.style.display = 'none';
+    	var firstScriptTag = document.getElementById('player');
+      var form = document.getElementById("form");
+      form.submit();
+      alert("you earn $10")
+      //<php? 
+        //$money = 10;
+        //$relFree = $mysqli->query("Select * from relations_free where userId='".$_SESSION['uid']."'")->fetch_assoc();
+        //$mysqli->query("update user_money set cash=cash+$money where userId='".$relFree['userId']."'");
+        //$mysqli->query("update user_money set cash=cash+($money*$persentForParent) where userId='".$relFree['parentId']."'");
+        //$mysqli->query("update user_money set cash=cash+($money*$persentForGrandParent) where userId='".$relFree['grandParentId']."'");
+      //?>
+    	//firstScriptTag.style.display = 'none';
 
 	//$('#player').replaceWith('<img src="https://www.google.com/images/srpr/logo4w.png">');
 //        hideVideo();
