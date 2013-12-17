@@ -1,6 +1,6 @@
     <!-- begin footer -->
     <div id="footer">
-      <div class="container">
+      <div class="container footer">
         <div class="col-md-12 column"> 
           <div class="row clearfix">
             <div class="col-md-3 column">
@@ -30,7 +30,7 @@
             <div class="col-md-3 column">
               <ul>
                 <li><h4>ABOUT US</h4></li>
-                <li class="text-muted credit"><a href="#">Who are we?</a></li>
+                <li class="text-muted credit"><a href="about.php">Who are we?</a></li>
                 <li class="text-muted credit"><a href="#">News</a></li>
                 <li class="text-muted credit"><a href="#">Gallery</a></li>
                 <li class="text-muted credit"><a href="#">Partnership</a></li>
@@ -44,7 +44,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/holder.js"></script>
   </body>

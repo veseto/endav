@@ -1,10 +1,10 @@
 <?php
-	include ("security.php");
+	include ("includes/security.php");
   	sec_session_start();
-	include("constants.php");
-	include("keyGenerator.php");
-	include("connection.php");
-	include("processFree.php");
+	include("includes/constants.php");
+	include("includes/keyGenerator.php");
+	include("includes/connection.php");
+	include("includes/processFree.php");
 	$salt = "'".$_GET['id']."'";
 	$q = "SELECT * FROM user where salt=$salt";
 	if($result = $mysqli->query($q)){
@@ -15,7 +15,7 @@
 				$stmt->bind_param("s", $refLink);
 				$stmt->execute();
 				addFreeUser($u['userId'], $u['refferal']);
-				mail($u['email'], "Your refferal link", $url."register.php?ref=".$refLink);
+				mail($u['email'], "Your refferal link", $url."signup-user.php?ref=".$refLink);
 				$stmt->close();
 				$_SESSION = array();
 				$_SESSION['status'] = 'OK';

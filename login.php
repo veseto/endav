@@ -16,7 +16,7 @@
 <script src="js/validation/additional-methods.js"></script>
 
 	<div class="input-group">
-		<form class="form-signin" method="post" action="usrlogin.php" id="login">
+		<form class="form-signin" method="post" action="processors/usrlogin.php" id="login">
   			<input type="text" name="email" id="email" class="input-block-level" placeholder="email"/>
 			<input type="password" name="password" id="password" class="input-block-level" placeholder="password"/>
 	        <label class="checkbox">

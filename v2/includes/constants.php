@@ -10,7 +10,7 @@
 	$persentForGrandParent = 0.015;
 
 	//Easy access constants
-	$url = "http://dev.endav.com/";
+	$url = "http://dev.endav.com/v2/";
 
 	//Paypal constants
 	$binarPositionPrice = 15;

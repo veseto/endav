@@ -1,6 +1,6 @@
 <?php
 	function addFreeUser($userId, $refferal) {
-		include("connection.php");
+		include("includes/connection.php");
 		if ($refferal == 0 || $refferal == -1) {
 			$refferal = $mysqli->query("SELECT userId from relations_binar ORDER BY RAND() LIMIT 1")->fetch_array()[0];
 		} 

@@ -4,6 +4,32 @@ body {
   padding: 0px;
 }
 
+
+.navbar-header img {
+  width: 56px;
+  height: 46px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navbar-header a {
+  margin: 3px 0px 0px 3px;
+  padding: 0px;
+  font-size: 150%;
+}
+
+.nav > li.signup > a {
+  color: #222;
+  border: none;
+}
+
+.nav > li.signup > a:hover,
+.nav > li.signup > a:focus {
+  color: black;
+  border: none;
+  background-color: #eeeeee;
+}
+
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
@@ -39,12 +65,13 @@ body {
 
 
 /* footer */
-#footer {
+.footer {
   margin-top: 25px;
   background-color: #EBEBD3;
+  border-radius: 5px;
 }
 
-#footer ul li {
+.footer ul li {
   list-style-type: none;
 }
 

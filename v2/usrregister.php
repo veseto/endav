@@ -1,9 +1,9 @@
 <?php
-	include ("security.php");
+	include ("includes/security.php");
   	sec_session_start();
-	include("connection.php");
-	include("constants.php");
-	include("keyGenerator.php");
+	include("includes/connection.php");
+	include("includes/constants.php");
+	include("includes/keyGenerator.php");
 	require_once('includes/phpass-0.3/PasswordHash.php');
 	
 	$email = $_POST['email'];
@@ -43,19 +43,18 @@
 				$headers = "";
 				$mailBody = "To confirm your account please follow the link: ".$url."confirm.php?id=$key\nYour password is $password";
 				mail($email,$subject,$mailBody,$headers);
-				$_SESSION['msg'] = 'REGISTRATION_SUCCESS';
-				header('Location: index.php');
+				header('Location: signupConfirm.php');
 				exit;
 			} else {
 				echo $stmt->error;
 			}
 		} else {
-			$_SESSION['msg'] = 'EMAIL_IN_USE';
-			header('Location: register.php');
+			$_SESSION['err'] = 'EMAIL_IN_USE';
+			header('Location: signup-user.php');
 			exit;
 		}
 	} else {
-		$_SESSION['msg'] = 'REGISTRATION_FAILED';
-		header('Location: register.php');
+		$_SESSION['err'] = 'REGISTRATION_FAILED';
+		header('Location: signup-user.php');
 	}
 ?>

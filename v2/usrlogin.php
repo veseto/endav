@@ -1,7 +1,7 @@
 <?php
-	require_once ("includes/security.php");
+	include ("includes/security.php");
   	sec_session_start();
-  	require_once("includes/connection.php");
+  	include("includes/connection.php");
   	$succ = "";
   	$err = "";
 
