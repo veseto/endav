@@ -1,6 +1,10 @@
 <?php include("includes/header.php"); ?>
 		<div class="container signup">
-			<div class="well">Text</div>
+			<ol class="breadcrumb-mod">
+			  <li><span class="glyphicon glyphicon-home"></span> <a href="index.php">Home</a></li>
+			  <li class="active">Choosing a plan</li>
+			  <h2>Choosing a plan</h2>
+			</ol>
 	        <div class="col-lg-3">
 	        </div>
 	        <div class="col-lg-3 text-center">

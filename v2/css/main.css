@@ -66,14 +66,76 @@ body {
 
 /* footer */
 .footer {
-  margin-top: 25px;
-  background-color: #EBEBD3;
+  margin-top: 15px;
+  background-color: #fcf8e3;
   border-radius: 5px;
 }
 
 .footer ul li {
   list-style-type: none;
 }
+
+.footer ul li h5 {
+  color: #c19857;
+}
+
+.footer ul li a {
+  color: #477fb1;
+  font-size: 90%;
+}
+
+.myButtonLink {
+  display: block;
+  width: 33px;
+  height: 32px;
+  background:url('../img/social/gray/Facebook.png') no-repeat 0 0;
+}
+.footer .myButtonLink:hover {
+  background:url('../img/social/color/Facebook.png') no-repeat 0 0;
+}
+
+
+/* well
+-------------------------------------------------- */
+
+.well {
+  background-color: none;
+  border: none;
+}
+
+
+/* breadcrumb
+-------------------------------------------------- */
+
+.breadcrumb-mod {
+  font-size: 90%;
+  padding: 5px;
+  margin-bottom: 0px;
+  list-style: none;
+  border-radius: 5px;
+}
+
+.breadcrumb-mod > li {
+  display: inline-block;
+}
+
+.breadcrumb-mod > h2 {
+  padding: 0px;
+  margin-top: 10px;
+  color: #477fb1;
+}
+
+.breadcrumb-mod > li + li:before {
+  padding: 0 5px;
+  color: #333;
+  content: "/\00a0";
+}
+
+.breadcrumb-mod > .active {
+  color: #999999;
+}
+
+
 
 
 /* signup

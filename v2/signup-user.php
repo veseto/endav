@@ -33,11 +33,17 @@
 				}
 			?>
 			<div class="signup">
-				<div class="well">Text</div>
+				<ol class="breadcrumb-mod">
+				  <li><span class="glyphicon glyphicon-home"></span> <a href="index.php">Home</a></li>
+				  <li><a href="signup.php">Choosing a plan</a></li>
+				  <li><a href="signup.php">Referrals</a></li>
+				  <li class="active">Sign Up as an End User</li>
+				  <h2>Sign Up as an End User</h2>
+				</ol>
 		        <div class="col-lg-4">
 		        </div>
 		        <div class="col-lg-4">
-			      <form class="form-signin" role="form" method="post" action="usrregister.php">
+			      <form class="form-signin" role="form" method="post" action="usrregister.php" id="regForm">
 			        <h3 class="form-signin-heading">Enter your details</h3>
 			        <?php
 			        	if (isset($_SESSION['refMail'])) {
@@ -65,7 +71,7 @@
 			        <input type="password" class="form-control" placeholder="Password" name="password" required>
 			        <input type="password" class="form-control" placeholder="Repeat password" name="password_confirm" required>
 			        <label class="checkbox">
-	      				<input type="checkbox" name="agree" id="agree" value="agree" required> I agree with <strong><a class="text-primary" data-toggle="modal" data-target="#myModal">Terms of use</a>.</strong>
+	      				<input type="checkbox" name="agree" value="agree"/> I agree with <strong><a class="text-primary" data-toggle="modal" data-target="#myModal">Terms of use</a>.</strong>
 			        </label>
 			        <button class="btn btn-md btn-warning form-inline" type="submit">Sign up</button> or <strong><a href="signup.php" class="form-inline text-primary">select another plan</a></strong>.
 			      </form>
@@ -93,9 +99,9 @@
 		<p>Duis tempor adipiscing ipsum at ultricies. Fusce odio est, rutrum id sem et, pretium facilisis turpis. Pellentesque bibendum lorem in erat dictum ornare. Etiam imperdiet convallis pretium. Vestibulum ut justo congue, pretium risus in, faucibus elit. Aenean tempus convallis nisi, malesuada eleifend justo feugiat at. Ut et dolor diam. Pellentesque sagittis vulputate ultricies. Nulla dui velit, bibendum a rutrum et, sodales vel nisi. Pellentesque id elit pellentesque odio pharetra volutpat.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Nope, changed my mind</button>
-        <button type="button" class="btn btn-warning">I agree</button>
-      </div>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Sounds good!</button>
+<!--         <button type="button" class="btn btn-warning" id="agree">I agree</button>-->      
+	</div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

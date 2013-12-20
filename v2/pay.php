@@ -1,5 +1,5 @@
 <?php
-	include('header.php');
+	include('includes/header.php');
 
 	if (!isset($_SESSION["uid"])) {
 		header('Location: index.php');
@@ -9,14 +9,16 @@
 		unset($_SESSION['msg']);
 	}
 ?>
+<div class="container">
+
 	<div id="payment" class="input-group">
 		
 
 
 <form id="paypal_form" class="paypal" action="paypal/payments.php" method="post">
 <?php
-include("connection.php");
-include("constants.php");
+include("includes/connection.php");
+include("includes/constants.php");
 $count = $mysqli->query("SELECT COUNT(*) from relations_binar where userId=".$_SESSION['uid'])->fetch_array()[0];
 if ($count + 1 <= $maxBinarPositions) {
 	echo '<select name="quantity" id="quantity">
@@ -50,8 +52,8 @@ if ($count + 1 <= $maxBinarPositions){
 }
 ?>
   </form>
-
+</div>
 	</div>
 <?php
-	include("footer.php");
+	include("includes/footer.php");
 ?>

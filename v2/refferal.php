@@ -39,7 +39,12 @@
 
 
 			<div class="signup">
-				<div class="well">Text</div>
+				<ol class="breadcrumb-mod">
+				  <li><span class="glyphicon glyphicon-home"></span> <a href="index.php">Home</a></li>
+				  <li><a href="signup.php">Choosing a plan</a></li>
+				  <li class="active">Referrals</li>
+				  <h2>Referrals</h2>
+				</ol>
 		        <div class="col-lg-4">
 		        </div>
 		        <div class="col-lg-3">

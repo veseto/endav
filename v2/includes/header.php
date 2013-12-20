@@ -118,10 +118,7 @@
                     <li>
                       <a href="profile.php"><?php echo $lang['MY_PROFILE'];?></a>
                     </li>
-                    <li>
-                      <a href="balance.php"><?php echo $lang['BALANCE'];?></a>
-                    </li>
-                    <li>
+                    <li class="disabled">
                       <a href="#"><span class="text-danger">Inbox</span><span class="badge pull-right text-danger">3</span></a>
                     </li>
                     <li class="disabled">

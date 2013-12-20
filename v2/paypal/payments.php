@@ -1,20 +1,20 @@
 <?php
-  include ("../security.php");
+  include ("../includes/security.php");
   sec_session_start();
-  include('../constants.php');
-include("../processBinar.php");
+  include('../includes/constants.php');
+include("../includes/processBinar.php");
 
 
 // PayPal settings
 $paypal_email = 'ludataaa-facilitator@mail.bg';
-$return_url = "http://dev.endav.com/paypal/paymentsResponse.php";
+$return_url = $url."paypal/paymentsResponse.php";
 $cancel_url = $url.'payment-cancelled.php';
-$notify_url = "http://dev.endav.com/paypal/paymentsResponse.php";
+$notify_url = $url."paypal/paymentsResponse.php";
 
 
 // Include Functions
 include("functions.php");
-include("../connection.php");
+include("../includes/connection.php");
 $count = $mysqli->query("SELECT COUNT(*) from relations_binar where userId=".$_SESSION['uid'])->fetch_array()[0];
 if ($count + $_POST['quantity'] <= $maxBinarPositions) {
 

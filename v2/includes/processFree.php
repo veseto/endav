@@ -8,7 +8,8 @@
 		$q3="INSERT INTO relations_free  (userId, parentId, grandParentId) VALUES ($userId, $refferal, $grandParent)";
 		$mysqli -> query($q3);
 		$mysqli -> query("INSERT INTO user_money (userId, cash, inSite) VALUES ($userId, 0, 0)");
-		
+		$mysqli -> query("INSERT INTO user_details (userId) VALUES ($userId)");
+
 	}
 
 ?>

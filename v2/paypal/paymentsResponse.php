@@ -1,9 +1,9 @@
 <?php
-  	include ("../security.php");
+  	include ("../includes/security.php");
   	sec_session_start();
-	include("../constants.php");
-	include("../processBinar.php");
-	include("../connection.php");
+	include("../includes/constants.php");
+	include("../includes/processBinar.php");
+	include("../includes/connection.php");
 	
 	  if (isset($_SESSION['uid'])) {
 			$q0 = "INSERT INTO `paymets`(`paymentId`, `paymentDate`, `paymentStatus`, `paymentType`, `paymentFee`, `tax`, `payerId`, `payerEmail`, `firstName`, `lastName`, `payerStatus`, `quantity`, `intemNumber`, `currency`, `itemName`, `finalPrice`, `shipping`, `auth`, `verifySign`, `business`, `receiverEmail`, `receiverId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -26,7 +26,7 @@
 			      $_SESSION['msg'] = 'BUY_SUCCESS';
 			    }
 		   }
-		   header("Location: ../pay.php");
+		   header("Location: ../profile.php");
   }
 	
 ?>

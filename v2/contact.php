@@ -1,27 +1,49 @@
 <?php include("includes/header.php"); ?>
 
-      <!-- begin page content -->
-      <!-- Marketing messaging and featurettes
-      ================================================== -->
-      <!-- Wrap the rest of the page in another container to center all the content. -->
+	<div class="container">
+<!--
+	  <ol class="breadcrumb well text-danger">
+	    <li><a href="index.php">Home</a></li>
+	    <li class="active">About</li>
+	  </ol>
+-->
 
-      <div class="container">
-	    <!-- Addresses -->
-	    <h2 id="type-addresses">Address</h2>
-	    <p>Contacting us is easy. Please allow up to 24 hours response time to your emails.</p>
-	    <div class="bs-example">
-	      <address>
-	        <strong>Endav, Inc.</strong><br>
-	        795 Folsom Ave, Suite 600<br>
-	        San Francisco, CA 94107<br>
-	        <abbr title="Phone">P:</abbr> (123) 456-7890<br>
-	        <abbr title="Cell">C:</abbr> (999) 456-7890
-	      </address>
-	      <address>
-	        <strong>George Georgiev</strong><br>
-	        <a href="mailto:info@endav.com?subject=contact">info@endav.com</a>
-	      </address>
-	    </div>
-      </div>
+		<div class="panel panel-warning">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Contacts</h3>
+		  </div>
+		  <div class="panel-body">
+			<!-- right panel -->
+			<div class="col-lg-1">
+			</div>
+			<div class="panel panel-danger col-lg-4 pull-right">
+			  <div class="panel-body">
+				<address>
+					<strong>Endav, Inc.</strong><br>
+					795 Folsom Ave, Suite 600<br>
+					San Francisco, CA 94107<br>
+					<abbr title="Phone">P:</abbr> (123) 456-7890<br>
+					<abbr title="Cell">C:</abbr> (999) 456-7890
+				</address>
+				<address>
+					<strong>George Georgiev</strong><br>
+					<a href="mailto:info@endav.com?subject=contact">info@endav.com</a>
+				</address>
+			  </div>
+			</div><!-- //right panel -->
+			<div class="col-lg-6">
+				<h5>Please allow up to 24 hours response time to your emails.</h5>
+					<form class="" role="form" method="post" action="usrlogin.php">
+					<input type="text" class="form-control" placeholder="Email" required autofocus name="email">
+					<textarea class="form-control" rows="5"></textarea>
+					<button class="btn btn-md btn-warning" type="submit">Send</button>
+					</form>
+				<small><strong>Please note:</strong> All requests are logged by time, ip address.</small>
+			</div>
+			<div class="col-lg-1">
+			</div>
+		  </div>
+		</div>
+	</div>
       
 <?php include("includes/footer.php"); ?>

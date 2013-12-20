@@ -1,11 +1,15 @@
 <?php
-	include ("includes/security.php");
-  	sec_session_start();
+	include("includes/header.php");
 	include("includes/constants.php");
 	include("includes/keyGenerator.php");
 	include("includes/connection.php");
 	include("includes/processFree.php");
+	
+	if (!isset($_GET['id'])) {
+		header('Location: index.php');
+	}
 	$salt = "'".$_GET['id']."'";
+
 	$q = "SELECT * FROM user where salt=$salt";
 	if($result = $mysqli->query($q)){
 		$u = $result->fetch_array();
@@ -19,19 +23,42 @@
 				$stmt->close();
 				$_SESSION = array();
 				$_SESSION['status'] = 'OK';
-				$_SESSION['msg'] = 'ACCOUNT_ACTIVATION_OK';
-				header('Location: index.php');
+				$_SESSION['succ'] = 'ACCOUNT_ACTIVATION_OK';
+				//header('Location: index.php');
 			} else {
 				echo $mysqli->error;
 			}
 		} else {
 				//echo "<script> alert('user is already activated');</script>";
-			$_SESSION['msg'] = "USER_ACTIVATED";
-			header('Location: index.php');
+			$_SESSION['err'] = "USER_ALREADY_ACTIVATED";
+			//header('Location: index.php');
 		}		
 	} else {
 		echo $mysqli->error;
 	}
-	
-	
 ?>
+		<div class="container">
+			<?php
+				if (isset($_SESSION['err'])) {
+					echo '<div class="alert alert-warning fade in">  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> '.$_SESSION['err'].'</div>';
+					unset($_SESSION['err']);
+				}
+				if (isset($_SESSION['succ'])) {
+					echo '<div class="alert alert-success fade in">  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> '.$_SESSION['succ'].'</div>';
+					unset($_SESSION['succ']);
+				}
+			?>
+			<div class="col-lg-3">
+				
+			</div>
+			<div class="col-lg-6">
+					
+						<h3> Your account has been activated - you can now log in </h3>
+				     	<a class="btn btn-warning" href="index.php"> Navigate home </a>
+			</div>
+			<div class="col-lg-3">
+				
+			</div>
+		</div>
+
+<?php include("includes/footer.php"); ?>

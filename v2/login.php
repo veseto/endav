@@ -11,23 +11,29 @@
 					unset($_SESSION['succ']);
 				}
 			?>
-			<div class="signup">
-		        <div class="col-lg-4">
-		        </div>
-		        <div class="col-lg-4">
-			      <form class="form-signin" role="form" method="post" action="usrlogin.php">
-			        <h3 class="form-signin-heading">Please log in</h3>
-			        <input type="text" class="form-control" placeholder="Email" required autofocus name="email">
-			        <input type="password" class="form-control" placeholder="Password" required name="password">
-			        <label class="checkbox">
-			          <input type="checkbox" name="remember-me" value="ok"> Remember me | <a href='password-retrieval.php' class="text-primary">Can't login?</a>
-			        </label>
-			        <button class="btn btn-md btn-warning btn-block" type="submit">Log in</button>
-			      </form>
-		        </div>
-		        <div class="col-lg-4">
-		        </div>
-	        </div>
-	      </div>
+			<div class="col-lg-3">
+				
+			</div>
+			<div class="col-lg-6">
+				<div class="panel panel-warning">
+					<div class="panel-heading">
+						<h3 class="panel-title">Please log in</h3>
+					</div>
+					<div class="panel-body">
+				      <form class="form-signin" role="form" method="post" action="usrlogin.php">
+				        <input type="text" class="form-control" placeholder="Email" required autofocus name="email">
+				        <input type="password" class="form-control" placeholder="Password" required name="password">
+				        <label class="checkbox">
+				          <input type="checkbox" name="remember-me" value="ok"> Remember me | <a href='password-retrieval.php' class="text-primary">Can't login?</a>
+				        </label>
+				        <button class="btn btn-lg btn-warning btn-block" type="submit">Log in</button>
+				      </form>
+					</div>
+				</div>	
+			</div>
+			<div class="col-lg-3">
+				
+			</div>
+		</div>
 
 <?php include("includes/footer.php"); ?>
