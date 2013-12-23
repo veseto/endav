@@ -38,40 +38,29 @@
 			?>
 
 
-			<div class="signup">
+			<div>
 				<ol class="breadcrumb-mod">
 				  <li><span class="glyphicon glyphicon-home"></span> <a href="index.php">Home</a></li>
 				  <li><a href="signup.php">Choosing a plan</a></li>
 				  <li class="active">Referrals</li>
 				  <h2>Referrals</h2>
 				</ol>
-		        <div class="col-lg-4">
+		        <div class="col-lg-3">
+		        </div>
+		        <div class="col-lg-6 centered">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3>Do you have a referral?</h3>
+							<input class="btn btn-md btn-primary" type="submit" id="next" name="next" value="Yes">
+							<!-- <input class="btn btn-md btn-default" type="submit" id="next" name="next" value="No"> -->
+							<a href="signup-user.php" class="btn btn-default">No</a>
+						</div>
+					</div>	
 		        </div>
 		        <div class="col-lg-3">
-					<h3 class="form-signin-heading">Referral</h3>
-					<form class="form-signin" role="form" method="post" action="">
-					<div class="radio">
-						
-						<label>
-						<input type="radio" name="optionsRadios" id="optionsRadios1" value="yes" checked>
-						I have a referral:
-						<input class="form-control" id="refMail" name="refMail" type="text" placeholder="Referral email or ID" required/>
-						</label>
-					</div>
-					<div class="radio">
-						<label>
-						<input type="radio" name="optionsRadios" id="optionsRadios2" value="no">
-						I don't have a referral
-						</label>
-						<button class="btn btn-md btn-warning btn-block" type="submit" id="next" name="next">Next</button>
-					</div>
-				</form>
-
-		        </div>
-		        <div class="col-lg-5">
 		        </div>
 	        </div>
-	      </div>
+		</div>
 
 	      <script type="text/javascript">
 			$('input:radio[name="optionsRadios"]').change(

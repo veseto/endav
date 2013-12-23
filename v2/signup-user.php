@@ -21,6 +21,12 @@
 	}
 ?>
 
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
+<script type="text/javascript" src="js/jquery.tooltipster.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/tooltipster.css" />
+	
+
 		<div class="container">
 			<?php
 				if (isset($_SESSION['err'])) {
@@ -36,50 +42,114 @@
 				<ol class="breadcrumb-mod">
 				  <li><span class="glyphicon glyphicon-home"></span> <a href="index.php">Home</a></li>
 				  <li><a href="signup.php">Choosing a plan</a></li>
-				  <li><a href="signup.php">Referrals</a></li>
+				  <li><a href="refferal.php">Referrals</a></li>
 				  <li class="active">Sign Up as an End User</li>
 				  <h2>Sign Up as an End User</h2>
 				</ol>
-		        <div class="col-lg-4">
+		        <div class="col-lg-3">
 		        </div>
-		        <div class="col-lg-4">
-			      <form class="form-signin" role="form" method="post" action="usrregister.php" id="regForm">
-			        <h3 class="form-signin-heading">Enter your details</h3>
-			        <?php
-			        	if (isset($_SESSION['refMail'])) {
-			        		echo '<input class="form-control" name="r" id="r" type="text" value='.$_SESSION['refMail'].' disabled/>';
-							echo '<input name="refMail" id="refMail" type="hidden" value='.$_SESSION['refMail'].'>';
-			        	} else if (isset($_GET['ref'])) {
-							$ref = "'".$_GET['ref']."'";
-							if ($stmt = $mysqli->prepare("SELECT email from user where refLink=?")){
-								$stmt->bind_param("s", $_GET['ref']);
-								//setcookie("ref", "", time() - 36000);
-								$stmt->bind_result($refferalUser);
-								$stmt->execute();
-								$stmt->fetch();
-								echo '<input class="form-control" name="r" id="r" type="text" value='.$refferalUser.' disabled/>';
-								echo '<input name="refMail" id="refMail" type="hidden" value='.$refferalUser.'>';
+		        <div class="col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-body">
+					      <form class="form-signin" role="form" method="post" action="usrregister.php" id="regForm">
+					        <?php
+					        	if (isset($_SESSION['refMail'])) {
+					        		echo '<input class="form-control" name="r" id="r" type="text" value='.$_SESSION['refMail'].' disabled/>';
+									echo '<input name="refMail" id="refMail" type="hidden" value='.$_SESSION['refMail'].'>';
+					        	} else if (isset($_GET['ref'])) {
+									$ref = "'".$_GET['ref']."'";
+									if ($stmt = $mysqli->prepare("SELECT email from user where refLink=?")){
+										$stmt->bind_param("s", $_GET['ref']);
+										//setcookie("ref", "", time() - 36000);
+										$stmt->bind_result($refferalUser);
+										$stmt->execute();
+										$stmt->fetch();
+										echo '<input class="form-control" name="r" id="r" type="text" value='.$refferalUser.' disabled/>';
+										echo '<input name="refMail" id="refMail" type="hidden" value='.$refferalUser.'>';
 
-								$stmt->close();
-							} else {
-								echo '<script> alert("Refferal link is incorrect") </script>';
-								echo '<input class="form-control" id="refMail" name="refMail" type="text" placeholder="referral">';
-							}
-						}
-					?>
-			        <input type="text" class="form-control" placeholder="Your email" required autofocus name="email">
-			        <input type="password" class="form-control" placeholder="Password" name="password" required>
-			        <input type="password" class="form-control" placeholder="Repeat password" name="password_confirm" required>
-			        <label class="checkbox">
-	      				<input type="checkbox" name="agree" value="agree"/> I agree with <strong><a class="text-primary" data-toggle="modal" data-target="#myModal">Terms of use</a>.</strong>
-			        </label>
-			        <button class="btn btn-md btn-warning form-inline" type="submit">Sign up</button> or <strong><a href="signup.php" class="form-inline text-primary">select another plan</a></strong>.
-			      </form>
+										$stmt->close();
+									} else {
+										echo '<script> alert("Refferal link is incorrect") </script>';
+										echo '<input class="form-control" id="refMail" name="refMail" type="text" placeholder="referral">';
+									}
+								}
+							?>
+					        <input type="text" class="form-control" placeholder="Your email" autofocus name="email">
+					        <input type="password" class="form-control" placeholder="Password" name="password1" id="password1">
+							<div class="input-group">
+						        <input type="password" class="form-control" placeholder="Repeat password" name="password_confirm">
+								<span class="input-group-btn">
+									<input class="btn btn-primary" type="submit" value="Go" />
+								</span>
+							</div>
+					        <label class="checkbox">
+			      				<input type="checkbox" name="agree" value="agree"/> I agree with <strong><a class="text-primary" data-toggle="modal" data-target="#myModal">Terms of use</a>.</strong>
+					        </label>
+					      </form>
+				      </div>
+			      </div>
 		        </div>
-		        <div class="col-lg-4">
+		        <div class="col-lg-3">
 		        </div>
 	        </div>
 	      </div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+
+    // initialize tooltipster on form input elements
+    $('#regForm input').tooltipster({ 
+        trigger: 'custom', // default is 'hover' which is no good here
+        onlyOne: false,    // allow multiple tips to be open at a time
+        position: 'left',  // display the tips to the right of the element
+        theme: '.tooltipster-shadow',
+        timer: 5000
+    });
+
+});
+
+	$("#regForm").validate({
+		 errorPlacement: function (error, element) {
+            $(element).tooltipster('update', $(error).text());
+            $(element).tooltipster('show');
+        },
+        success: function (label, element) {
+            $(element).tooltipster('hide');
+        },
+		rules: {
+			password1: {
+				required: true,
+				minlength: 5
+			},
+			password_confirm: {
+				required: true,
+				minlength: 5,
+				equalTo: "#password1"
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			agree: "required"
+		},
+		messages: {
+			password1: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			},
+			confirm_password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long",
+				equalTo: "Please enter the same password as above"
+			},
+			email: "Please enter a valid email address",
+			agree: "Please accept our policy"
+		}
+	});
+
+	
+</script>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

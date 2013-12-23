@@ -43,7 +43,7 @@
 				if ($userId) {
 					 if ($hasher->CheckPassword($password, $hashedPassword)) {
 						if ($activated === 1) {
-							if (isset($_POST['remember-me'])) {
+							if (isset($_POST['rememberme'])) {
 								setcookie("endav", $userId, time()+60*60*24*30, "login.php");
 							}
 							$_SESSION['uid'] = $userId;
@@ -75,5 +75,5 @@
 	}
 	//print_r($_SESSION);
 			//$_SESSION['msg'] = $msg;
-			header('Location: index.php') ;
+			header('Location: profile.php') ;
 ?>

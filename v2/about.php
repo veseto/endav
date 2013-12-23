@@ -1,16 +1,12 @@
 <?php include("includes/header.php"); ?>
 
 <div class="container">
-<!--
-      <ol class="breadcrumb well text-danger">
-        <li><a href="index.php">Home</a></li>
-        <li class="active">About</li>
+      <ol class="breadcrumb-mod">
+        <li><span class="glyphicon glyphicon-home"></span> <a href="index.php">Home</a></li>
+        <li class="active">About Us</li>
+        <h2>About Us</h2>
       </ol>
--->
       <div class="panel panel-warning">
-          <div class="panel-heading">
-            <h3 class="panel-title">About Us</h3>
-          </div>
           <div class="panel-body">
             <h3>Morbi pulvinar neque sit amet eleifend aliquet. <small>Vestibulum eget interdum purus, vel volutpat dolor.</small></h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique dictum dignissim. Sed iaculis arcu non elit consectetur, pretium varius sem auctor. Suspendisse molestie, diam ac iaculis tincidunt, nisi libero iaculis metus, sed posuere dui massa viverra odio. Quisque quis sem velit. Integer in commodo felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc hendrerit vel est at sollicitudin. Nulla non tristique dui. Aenean quis ultrices arcu. Donec consectetur lectus massa, tristique vestibulum arcu sagittis vitae. Aliquam enim lectus, luctus ut leo eget, sodales placerat velit. Aenean ac arcu ac neque iaculis porttitor et rhoncus turpis. Etiam viverra sem et hendrerit viverra. Sed nunc nisi, condimentum a orci sit amet, dictum pellentesque libero. Praesent porttitor enim nec orci euismod, a laoreet diam sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

@@ -131,6 +131,14 @@ body {
   content: "/\00a0";
 }
 
+.breadcrumb-mod > li a {
+  color: #333;
+}
+
+.breadcrumb-mod > li span {
+  margin-right: 4px;
+}
+
 .breadcrumb-mod > .active {
   color: #999999;
 }

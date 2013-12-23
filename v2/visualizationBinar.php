@@ -1,12 +1,22 @@
-<?php
-	include("includes/header.php");
+<?php 
+  ob_start();
+  require_once ("includes/security.php");
+  sec_session_start();
+  require_once ("includes/common.php");
+#	include("includes/header.php");
 	include("includes/connection.php");
 ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  </head>
 
-<div class="container">
+  <body>
+      <h1 style="text-align: center;">Binar</h1>
+      <h4>Note: Double-click a node to expand/collapse.</h4>
 			<div id="chart_div"> </div>
-</div>
-     <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+      <script type='text/javascript' src='https://www.google.com/jsapi'></script>
           <script type='text/javascript'>
             google.load('visualization', '1', {packages:['orgchart']});
             google.setOnLoadCallback(drawChart);
@@ -14,16 +24,18 @@
               $.ajaxSetup( { "async": false } );
 
               var json;
-               $.getJSON('printBinar.php', function(data) {
+               $.getJSON('includes/printBinar.php', function(data) {
                 json = data;
               });
+              var options = {'allowHtml':true,
+                              'allowCollapse':true,
+                              'size':'small'};
             
         // Create our data table out of JSON data loaded from server.
             var data = new google.visualization.DataTable(json);
                 var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
-                chart.draw(data, {allowHtml:true});
+                chart.draw(data, options);
             }
           </script>
-<?php
-	include("includes/footer.php");
-?>
+  </body>
+</html>

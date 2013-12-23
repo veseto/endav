@@ -7,7 +7,7 @@
 	require_once('includes/phpass-0.3/PasswordHash.php');
 	
 	$email = $_POST['email'];
-	$password = $_POST['password'];
+	$password = $_POST['password1'];
 	$message = "";
 	$refferal = 0;
 	print_r($_POST);

@@ -44,7 +44,7 @@
       </div>
       <div class="text-center">
         <h5>&copy; 2014 Endav Ltd. All rights reserved.</h5>
-        <h5><a href="#" class="text-warning">Privacy Policy</a> | <a href="#" class="text-warning">Terms of Use</a></h5>
+        <h5><a href="#" class="text-primary">Privacy Policy</a> | <a href="#" class="text-primary">Terms of Use</a></h5>
         <a href="#"><img src="img/social/gray/Facebook.png" /></a> <a href="#"><img src="img/social/gray/Twitter.png" /></a> <a href="#"><img src="img/social/gray/GooglePlus.png" /></a>
 <!--
         <div>

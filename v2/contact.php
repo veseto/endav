@@ -7,16 +7,17 @@
 	    <li class="active">About</li>
 	  </ol>
 -->
-
-		<div class="panel panel-warning">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Contacts</h3>
-		  </div>
+		<ol class="breadcrumb-mod">
+		  <li><span class="glyphicon glyphicon-home"></span> <a href="index.php">Home</a></li>
+		  <li class="active">Contact Us</li>
+		  <h2>Contact Us</h2>
+		</ol>
+		<div class="panel panel-default">
 		  <div class="panel-body">
 			<!-- right panel -->
 			<div class="col-lg-1">
 			</div>
-			<div class="panel panel-danger col-lg-4 pull-right">
+			<div class="panel panel-info col-lg-4 pull-right">
 			  <div class="panel-body">
 				<address>
 					<strong>Endav, Inc.</strong><br>
@@ -36,7 +37,7 @@
 					<form class="" role="form" method="post" action="usrlogin.php">
 					<input type="text" class="form-control" placeholder="Email" required autofocus name="email">
 					<textarea class="form-control" rows="5"></textarea>
-					<button class="btn btn-md btn-warning" type="submit">Send</button>
+					<button class="btn btn-md btn-primary" type="submit">Send</button>
 					</form>
 				<small><strong>Please note:</strong> All requests are logged by time, ip address.</small>
 			</div>

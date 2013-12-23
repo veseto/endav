@@ -6,21 +6,27 @@
   	sec_session_start();
   	require_once('includes/phpass-0.3/PasswordHash.php');
 	if (isset($_POST['email'])) {
-		echo "first";
-		$email = $_POST['email'];
-		$key = keyGen($email);
-		$subject = "Reset password";
-		$headers = "";
-		$mailBody = "To reset your passwod please follow the link: ".$url."usrPasswordReset.php?id=".$key;
-		$key = "'".$key."'";
-		if ($stmt = $mysqli->prepare("UPDATE user SET salt=? WHERE email=?")) {
-			$stmt -> bind_param("ss", $key, $email);
-			$stmt -> execute();
-			$stmt -> close();
-			mail($email,$subject,$mailBody,$headers);
-			$_SESSION['msg'] = 'PASS_RESET_MAIL_SENT';
-			header('Location: resetPwdConfirm.php');
-			exit;
+		$q="SELECT COUNT(userId) FROM user where email='".$_POST['email']."'";
+		$count = $mysqli->query($q)->fetch_array()[0];
+		if ($count === NULL || $count === '0') {
+			$_SESSION['err'] = "USER_DOES_NOT_EXIST";
+			header('Location: password-retrieval.php');
+		} else {	
+			$email = $_POST['email'];
+			$key = keyGen($email);
+			$subject = "Reset password";
+			$headers = "";
+			$mailBody = "To reset your passwod please follow the link: ".$url."usrPasswordReset.php?id=".$key;
+			$key = "'".$key."'";
+			if ($stmt = $mysqli->prepare("UPDATE user SET salt=? WHERE email=?")) {
+				$stmt -> bind_param("ss", $key, $email);
+				$stmt -> execute();
+				$stmt -> close();
+				mail($email,$subject,$mailBody,$headers);
+				$_SESSION['msg'] = 'PASS_RESET_MAIL_SENT';
+				header('Location: resetPwdConfirm.php');
+				exit;
+			}
 		}
 	} else if (isset($_GET['id'])) {
 		if ($stmt = $mysqli->prepare("SELECT email FROM user WHERE salt=?")){
@@ -36,7 +42,6 @@
 			
 		}
 	} else if (isset($_POST['updemail']) && isset($_POST['password'])) {
-		echo "third";
 		if ($stmt = $mysqli->prepare("UPDATE user SET password=?, salt = NULL WHERE email=?")) {
 			$hasher = new PasswordHash(8, false);
 			$hashedPassword = $hasher->HashPassword($_POST['password']);	

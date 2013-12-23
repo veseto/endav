@@ -3,7 +3,7 @@
 	$levelsToBonus1 = 3;
 	$levelsToBonus2 = 4;
 
-	$maxBinarPositions = 10;
+	$maxBinarPositions = 100;
 	$bonusForBinarFriend = 5;
 
 	$persentForParent = 0.03;

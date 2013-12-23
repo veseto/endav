@@ -13,7 +13,7 @@
             <div class="jumbotron">
               <h1>Welcome to endav.com</h1>
               <p>Earning money just became that much easier. Sign up as an advertiser or an end user and start earning money today!</p>
-              <p><a href="#" class="btn btn-warning btn-lg" role="button">Learn more &raquo;</a></p>
+              <p><a href="#" class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
             </div>
           </div>
 
@@ -22,19 +22,19 @@
             <img class="img-circle" data-src="holder.js/200x200" alt="Generic placeholder image">
             <h2>Where to start?</h2>
             <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-warning" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="img-circle" data-src="holder.js/200x200" alt="Generic placeholder image">
             <h2>How does it work?</h2>
             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-warning" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="img-circle" data-src="holder.js/200x200" alt="Generic placeholder image">
             <h2>Classified</h2>
             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-warning" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 

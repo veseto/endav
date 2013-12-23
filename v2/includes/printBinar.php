@@ -1,7 +1,7 @@
 <?php
-	  include ("includes/security.php");
+	  include ("security.php");
   sec_session_start();
-	include("includes/connection.php");
+	include("connection.php");
 	header('Content-type:application/javascript');
 	if (isset($_SESSION['uid'])) {
 		$uid = $_SESSION['uid'];
@@ -33,9 +33,10 @@
 			$firstElement['f'] = "".$position['email'];
 			$firstElement['v'] = "".$index;
 
-			$parent = round ($index / 2 - 1, 0 , PHP_ROUND_HALF_UP);
-			if ($parent < 0) {
+			if ($i == 0) {
 				$parent = "";
+			} else {
+				$parent = round ($index / 2 - 1, 0 , PHP_ROUND_HALF_UP);
 			}
 			$row = array();
 			$secondElement = array();

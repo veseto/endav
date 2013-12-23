@@ -27,57 +27,62 @@
 
 ?>
 <div class="container">
-	<ol class="breadcrumb well text-danger">
-	  <li><a href="index.php">Home</a></li>
+	<ol class="breadcrumb-mod">
+	  <li><span class="glyphicon glyphicon-home"></span> <a href="index.php">Home</a></li>
 	  <li class="active">My Profile</li>
+	  <h2>My Profile</h2>
 	</ol>
 	<div class="row">
 		<div class="col-sm-4 pull-right">
-	  <div class="panel panel-success">
+	  <div class="panel panel-info">
 	    <div class="panel-heading">
-	      <h3 class="panel-title">Balance<button class="btn btn-default btn-xs pull-right">Add</button></h3>
+	      <h3 class="panel-title">Balance<button class="btn btn-default btn-xs pull-right disabled">Add</button></h3>
 	    </div>
 	    <div class="panel-body">
 	    	<p>Cash: <strong><?php echo number_format($arr["cash"], 2); ?></strong></p>
 	      	<p>In-site money: <strong><?php echo number_format($arr["inSite"], 2); ?></strong></p>
-	    </div>
-	    <div class="panel-footer">
-	    	<a href="#" class="text-default">Cashflow</a> | 
-	    	<a href="#" class="text-default">Stats</a> | 
-	    	<a href="#" class="text-default">Withdraw</a>
+			<div class="btn-group btn-group-justified">
+				<a class="btn btn-default disabled" role="button" href="#">Cashflow</a>
+				<a class="btn btn-default disabled" role="button" href="#">History</a>
+				<a class="btn btn-default disabled" role="button" href="#">Withdraw</a>
+			</div>
 	    </div>
 	  </div>
-	  <div class="panel panel-warning">
+	  <div class="panel panel-info">
 	    <div class="panel-heading">
 	      <h3 class="panel-title">Bonus Positions<a href="pay.php" class="btn btn-default btn-xs pull-right">Buy</a></h3>
 	    </div>
 	    <div class="panel-body">
-	      <p>Bonus Positions in Level 1: <strong><?php echo $bounusLvl1; ?></strong></p>
-	      <p>Bonus Positions in Level 2: <strong><?php echo $bounusLvl2; ?></strong></p>
-	    </div>
-	    <div class="panel-footer">
-	    	<span class="text-default">Display:
-	    	<a href="#" class="text-default">Standard Tree</a> | 
-	    	<a href="visualizationBinar.php" class="text-default">Binar</a>
+			<p>Bonus Positions in Level 1: <span class="text-danger"><strong><?php echo $bounusLvl1; ?></strong></span></p>
+			<p>Bonus Positions in Level 2: <strong><?php echo $bounusLvl2; ?></strong></p>
+			<div class="btn-group btn-group-justified">
+				<a class="btn btn-default" role="button" href="visualizationFree.php" target="_blank">Standard</a>
+				<a class="btn btn-warning" role="button" href="visualizationBinar.php" target="_blank">Binar</a>
+			</div>
 	    </div>
 	  </div>
 		</div><!-- /.col-sm-4 -->
-		<div class="col-sm-8">
-		<div class="panel panel-warning">
-		  <!-- Default panel contents -->
-		  <div class="panel-heading" id="detailsPannel">Personal Details <button id="editDetails" class="btn btn-default btn-xs pull-right">Edit</button> <button id="saveDetails" style="display: none;" class="btn btn-default btn-xs pull-right">Save</button> <button id="cancelEdit" style="display: none;" class="btn btn-default btn-xs pull-right">Cancel</button></div>
-		  <div class="panel-body">
-		  	Referral ID: <span class="text-success pull-right"><strong><?php echo $refLink ?></strong></span>
+		<div class="col-sm-6">
+		<div class="panel panel-primary">
+		  <div class="panel-body" id="detailsPannel">Referral ID
+		  	<span class="text-default pull-right"><strong><abbr title="Send this to your friends"><?php echo $refLink ?></abbr></strong></span>
 		  </div>
+		</div>
+
+		<div class="panel panel-primary">
+		  <!-- personal details panel -->
+		  <div class="panel-heading" id="detailsPannel">Personal Details <button id="editDetails" class="btn btn-default btn-xs pull-right">Edit</button> <button id="saveDetails" style="display: none;" class="btn btn-default btn-xs pull-right">Save</button> <button id="cancelEdit" style="display: none;" class="btn btn-default btn-xs pull-right">Cancel</button></div>
+
+
 
 		  <!-- List group -->
 		  <ul class="list-group" >
 		  	<form id="details" action="" method="post">
-			    <li class="list-group-item">Country: <span class="val pull-right"><?php echo $country; ?></span></li>
-			    <li class="list-group-item">Phone Number: <span class="val pull-right"><?php echo $phone; ?></span></li>
-			    <li class="list-group-item">City: <span class="val pull-right"><?php echo $city; ?></span></li>
-			    <li class="list-group-item">Address: <span class="val pull-right"><?php echo $address; ?></span></li>
-			    <li class="list-group-item">Birth Date: <span class="val pull-right"><?php echo $bday; ?></span></li>
+			    <li class="list-group-item"><select id="countries_phone1" class="form-control bfh-countries" data-country=<?php echo $country;?> disabled name="country" data-flags="true"></select></li>
+			    <li class="list-group-item"><input id="phone" name="phone" type="text" class="form-control bfh-phone" data-country="countries_phone1" value=<?php echo substr($phone, strpos($phone, " ") + 1);?> disabled ></input></li>
+			    <li class="list-group-item">City <span class="val pull-right"><?php echo $city; ?></span></li>
+			    <li class="list-group-item">Address <span class="val pull-right"><?php echo $address; ?></span></li>
+			    <li class="list-group-item">Birth Date <span class="val pull-right"><?php echo $bday; ?></span></li>
 			</form>
 		  </ul>
 		</div>
@@ -92,13 +97,10 @@
 		$("#cancelEdit").css("display", "block");
 
 		$("#details li").each(function(){
-			var val = $(this).find(".val");
-			var text = val.text();
-			val.text("");
 			if ($(this).index() == 0) {	
-				val.append('<input type="text" id="country" name="country" value="'+ text + '">');
+				$(this).find("#countries_phone1").removeProp("disabled");
 			} else if ($(this).index() == 1) {
-				val.append('<input type="text" id="phone" name="phone" value="'+ text + '">');
+				$(this).find("#phone").removeProp("disabled");
 			} else if ($(this).index() == 2) {
 				val.append('<input type="text" id="city" name="city" value="'+ text + '">');
 			} else if ($(this).index() == 3) {

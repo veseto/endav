@@ -23,6 +23,10 @@
     <link href="css/main.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 
+    <!-- Bootstrap form helpers  -->
+    <link href="bfh/dist/css/bootstrap-formhelpers.min.css" rel="stylesheet">
+    <script type="text/javascript" src="bfh/dist/js/bootstrap-formhelpers.js"></script>
+
 
 <!--    <link href="dist/css/carousell.css" rel="stylesheet"> -->
 
@@ -76,7 +80,7 @@
                 <form class="navbar-form navbar-left" role="search">
                   <div class="form-group">
                     <input type="text" placeholder=<?php echo $lang['SEARCH'];?> class="form-control">
-                  </div> <button type="submit" class="btn btn-warning disabled">GO</button>
+                  </div> <button type="submit" class="btn btn-primary disabled">GO</button>
                 </form>
               </li>
                 <li>
@@ -152,7 +156,7 @@
                 </li> -->
                 <?php } else {?>
                   <li class="signup">
-                  <a href="signup.php" class="btn btn-md btn-warning"><strong><?php echo $lang['SIGNUP'];?></strong></a>
+                  <a href="signup.php" class="btn btn-md btn-default"><strong><?php echo $lang['SIGNUP'];?></strong></a>
                 </li>
                 <li>
                   <p class="navbar-text">|</p>
